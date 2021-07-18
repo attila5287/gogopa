@@ -4,8 +4,8 @@ import React from 'react';
 
 function Table() {
   return (
-		<table className='table table-striped table-hover'>
-			<thead className='bg-transparent table-info'>
+		<table className='table table-striped table-hover table-info my-5'>
+			<thead className='text-info shadow'>
 				<tr>
 					<th scope='col'>
 						<i className='fab fa-react fa-spin text-lg'> </i>
@@ -65,7 +65,7 @@ function Table() {
 					<td className='text-danger'>($ 2,415,541)</td>
 				</tr>
 
-				<tr className='table-primary'>
+				<tr>
 					<th scope='row'>
 						<em>Gross Profit</em>
 					</th>
