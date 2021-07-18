@@ -5,13 +5,14 @@ function InfoNote() {
 	const [store] = useStoreContext();
 
 	return (
-<i className='text-sm mt-0 mb-5'>
-	&middot;
-	<b>P</b>
-	lanning &middot;
-	<b>A</b>
-	nalytics &middot;
-</i>
+    <i className='text-sm mt-0 mb-5'>
+			<b>Gogo</b>
+			&middot;
+			<b>P</b>
+			lanning &middot;
+			<b>A</b>
+			nalytics &middot;
+		</i>
 	);
 }
 

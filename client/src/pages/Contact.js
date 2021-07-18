@@ -1,20 +1,21 @@
 import React from "react";
-import Table from '../components/Table';
 import { Col, Row, Container } from "../components/Grid";
-// import PostsList from "../components/PostsList";
+import CreatePostForm from "../components/CreatePostForm";
+import PostsList from "../components/PostsList";
 
-const Home = () => {
+const Contact = () => {
   return (
     <Container fluid>
       <Row>
         <Col size="md-6">
-          <Table />
+          <CreatePostForm />
         </Col>
         <Col size="md-6 sm-12">
+          <PostsList />
         </Col>
       </Row>
     </Container>
   );
 };
 
-export default Home;
+export default Contact;
