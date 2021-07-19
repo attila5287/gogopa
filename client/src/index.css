@@ -46,10 +46,6 @@ a.nav-a:focus {
   border-color: #2c3e50;
 }
 
-.border-med {
-  border-width: 0.25rem;
-}
-
 .bg-navy {
   background-color: rgb(59, 84, 167);
 }
@@ -143,6 +139,9 @@ a.nav-a:focus {
    border-radius: 50%;
 }
 
+.border-lite {
+  border-width: 0.15rem;
+}
 .border-med {
   border-width: 0.25rem;
 }
@@ -272,17 +271,17 @@ transform: rotate(90deg);
 
 
 thead th:first-child {
-  border-radius: 1.75rem 0 0  1.75rem;
+  border-radius: 0.5rem 0 0  0.5rem;
 }
 thead th:last-child {
-  border-radius: 0 1.75rem  1.75rem 0;
+  border-radius: 0 0.5rem  0.5rem 0;
 }
 
 tbody th:first-child {
-  border-radius: 1.75rem 0 0 1.75rem;
+  border-radius: 0.5rem 0 0 0.5rem;
 }
 tbody td:last-child {
-  border-radius: 0 1.75rem  1.75rem  0;
+  border-radius: 0 0.5rem  0.5rem  0;
 }
 
 .add-anime {

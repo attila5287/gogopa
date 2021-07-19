@@ -7,7 +7,7 @@ export default function AppLogo() {
 			<Animated
 				animationIn='slideInUp'
 				isVisible={true}
-				className='fab fa-goodreads-g text-primary'
+				className='fab fa-glide-g text-info'
 			></Animated>
 			<Animated
 				className='fas fa-chart-pie text-info'
@@ -16,7 +16,7 @@ export default function AppLogo() {
 				isVisible={true}
 			></Animated>
 			<Animated
-				className='fab fa-goodreads-g text-primary'
+				className='fab fa-glide-g text-green'
 				animationIn='slideInDown'
 				isVisible={true}
 			></Animated>

@@ -5,14 +5,14 @@ import { Col, Row, Container } from "../components/Grid";
 
 const Home = () => {
   return (
+    
     <Container fluid>
-      <Row>
-        <Col size="md-6">
-          <Table />
-        </Col>
-        <Col size="md-6 sm-12">
-        </Col>
-      </Row>
+      <div className='mini'>
+        <p>
+          <i className='fas fa-info-circle'></i>
+          Edit table cells below</p>
+        <Table />
+      </div>    
     </Container>
   );
 };
