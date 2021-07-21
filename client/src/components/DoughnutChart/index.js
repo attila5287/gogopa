@@ -20,12 +20,34 @@ const data = {
 	]
 };
 
-const DoughnutChart = () => (
-  <>
-    <div className='row col-8 offset-2'>
-		<Doughnut data={data} />
+const options = {
+	scales: {
+		yAxes: [
+			{
+				ticks: {
+					beginAtZero: false,
+					fontSize: 10
+				}
+			}
+		]
+	},
+	plugins: {
+		legend: {
+			labels: {
+				// This more specific font property overrides the global property
+				font: {
+					size: 8
+				}
+			}
+		}
+	}
+};
 
-    </div>
+const DoughnutChart = () => (
+	<>
+		<div className='row col-8 offset-2'>
+			<Doughnut data={data} options={options} />
+		</div>
 	</>
 );
 
