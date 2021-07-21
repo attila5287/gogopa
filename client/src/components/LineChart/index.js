@@ -1,5 +1,5 @@
 import React from 'react';
-import { Line } from 'react-chartjs-3';
+import { Line } from '@iftek/react-chartjs-3';
 const data = {
 	labels: ['Q1', 'Q2', 'Q3', 'Q4'],
 	datasets: [

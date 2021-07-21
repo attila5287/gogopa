@@ -30,7 +30,6 @@
     "lodash": "^4.17.21",
     "mongoose": "^5.3.16",
     "prop-types": "^15.7.2",
-    "react-animated-css": "^1.2.1",
-    "react-chartjs-3": "^2.7.7"
+    "react-animated-css": "^1.2.1"
   }
 }
