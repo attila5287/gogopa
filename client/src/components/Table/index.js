@@ -158,17 +158,17 @@ function Table() {
 					</td>
 				</tr>
 				<tr className='text-sm table-info text-ubu'>
-					<th scope='row' className='text-xl text-center py-0'>
+        <th scope='row' className='text-center'>
 						<span className='mx-1'>&Sigma;=</span>
 					</th>
 					<td>
 						<i> 1,311,751 </i>
 					</td>
 					<td>
-						<i> 4,359,456 </i>
+						<i> 40,140 </i>
 					</td>
 					<td>
-						<i> 841,797 </i>
+						<i> 842,227 </i>
 					</td>
 					<td>
 						<i> 1,202,778 </i>
