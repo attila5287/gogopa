@@ -1,6 +1,7 @@
 import React from "react";
 import Table from '../components/Table';
 // import Chart from '../components/Chart';
+import Combined from '../components/Combined';
 import BarChart from '../components/BarChart';
 import LineChart from '../components/LineChart';
 import { Col, Row, Container } from "../components/Grid";
@@ -13,6 +14,7 @@ const Home = () => {
 				<Table />
 				<LineChart />
 				<BarChart />
+				<Combined />
 			</div>
 		</Container>
 	);
