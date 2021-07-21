@@ -46,7 +46,7 @@ const options = {
 const DoughnutChart = () => (
 	<>
 		<div className='row col-8 offset-2'>
-			<Doughnut data={data} options={options} />
+			<Doughnut data={data} />
 		</div>
 	</>
 );
