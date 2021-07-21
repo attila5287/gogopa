@@ -4,6 +4,7 @@ import Table from '../components/Table';
 import Combined from '../components/Combined';
 import BarChart from '../components/BarChart';
 import LineChart from '../components/LineChart';
+import DoughnutChart from '../components/DoughnutChart';
 import { Col, Row, Container } from "../components/Grid";
 // import PostsList from "../components/PostsList";
 
@@ -14,7 +15,8 @@ const Home = () => {
 				<Table />
 				<LineChart />
 				<BarChart />
-				<Combined />
+				<DoughnutChart />
+        <Combined />
 			</div>
 		</Container>
 	);

@@ -54,11 +54,10 @@ const Crazy = () => {
 
 	return (
 		<>
-			<div className='header'>
 				<p className='mb-0'>
+          <i className='fas fa-question-circle'></i>
 					<i>test dynamic with random chart.js</i>
 				</p>
-			</div>
 			<Bar data={data} options={options} />
 		</>
 	);
