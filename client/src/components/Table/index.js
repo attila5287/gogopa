@@ -172,7 +172,7 @@ function Table() {
 							<i> 842,227 </i>
 						</td>
 						<td>
-							<i> 1,202,778 </i>
+							<i> 797,652 </i>
 						</td>
 					</tr>
 				</tbody>
