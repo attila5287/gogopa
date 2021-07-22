@@ -36,7 +36,10 @@ const myData = [
 ];
 
 const genData = () => ({
-	labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+  labels: [ 'Q1', 'Q2', 'Q3', 'Q4' ],
+  // number (pixels) or 'flex'
+  barThickness: '11',
+
 
   datasets: [
     myData[ 0],
@@ -127,16 +130,17 @@ const Dynamic = () => {
 						}}
 						options={{
 							plugins: {
+                
 								title: {
 									position: 'top',
 									align: 'center',
 									display: true,
-									text: 'vs ' + data.datasets[0].label
+									text: data.datasets[0].label
 								},
 								legend: {
 									position: 'bottom',
 									display: true
-								}
+								},
 							}
 						}}
 					/>
