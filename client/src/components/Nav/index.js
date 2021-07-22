@@ -32,14 +32,20 @@ function Nav() {
 				<i className='far fa-envelope mx-1'></i>
 				<span className='text-sm'></span>
 			</a>
+
 			{store.loading ? (
-				<a className='text-info navbar-brand text-sm'>
-					<i className='text-sm fas fa-cog fa-pulse'></i>
-					<i className='text-md fas fa-cog fa-spin'></i>
-					<em className='text-sm'>Loading...</em>
+				<a className='nav-item nav-link disabled'>
+					<i className='fas fa-spinner fa-pulse mx-1 text-sm'></i>
+					Loading...
 				</a>
 			) : (
-				<></>
+				<a
+					className='nav-item nav-link disabled'
+					data-toggle='tooltip'
+            title='loading success'
+          >
+					<small className='far fa-check-circle mx-1'></small>
+				</a>
 			)}
 		</nav>
 	);

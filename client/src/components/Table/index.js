@@ -16,7 +16,7 @@ function Table() {
 					</i>
 				</caption>
 				<thead className='shadow'>
-					<tr className='my-0 py-0 text-info'>
+					<tr className='my-0 py-0'>
 						<th
 							scope='col'
 							className='text-center bg-secondary'
