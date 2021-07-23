@@ -51,7 +51,7 @@ function Table() {
 							scope='row'
 							className='align-middle d-flex flex-row justify-content-start align-items-center text-sm'
 						>
-							<i className='fas fa-ruler-vertical text-info mx-1'></i>
+							<i className='fas fa-ruler-vertical mx-1'></i>
 							Gross Sales
 						</th>
 						<td>
@@ -88,7 +88,7 @@ function Table() {
 							scope='row'
 							className='align-middle d-flex flex-row justify-content-start align-items-center text-sm'
 						>
-							<i className='fas fa-ruler-vertical text-info mx-1'></i>
+							<i className='fas fa-ruler-vertical mx-1'></i>
 							Fixed Cost
 						</th>
 						<td>
@@ -125,7 +125,7 @@ function Table() {
 							scope='row'
 							className='align-middle d-flex flex-row justify-content-start align-items-center text-sm'
 						>
-							<i className='fas fa-ruler-vertical text-info mx-1'></i>
+							<i className='fas fa-ruler-vertical mx-1'></i>
 							Operations Cost
 						</th>
 						<td>
@@ -158,21 +158,46 @@ function Table() {
 							></input>
 						</td>
 					</tr>
-					<tr className='table-info text-sm'>
-						<th scope='row' className='text-center'>
-							<span className='mx-1'>&Sigma;=</span>
+					<tr className='table-info'>
+						<th
+							scope='row'
+							className='align-middle d-flex flex-row justify-content-start align-items-center text-sm'
+						>
+							<i className='fas fa-ruler-vertical mx-1'></i>
+							Profit/Loss
 						</th>
 						<td>
-							<i> 1,311,751 </i>
+							<input
+								className='px-0 py-0 w-100 form-control-lg text-md text-center form-control-plaintext'
+								type='text'
+								value='1,311,751'
+								readonly
+							></input>
 						</td>
 						<td>
-							<i> 40,140 </i>
+							<input
+								className='px-0 py-0 w-100 form-control-lg text-md text-center form-control-plaintext'
+								type='text'
+								value='40,140'
+								readonly
+							></input>
 						</td>
 						<td>
-							<i> 842,227 </i>
+							<input
+								className='px-0 py-0 w-100 form-control-lg text-md text-center form-control-plaintext'
+								type='text'
+								value='842,227'
+								readonly
+							></input>
 						</td>
+
 						<td>
-							<i> 797,652 </i>
+							<input
+								className='px-0 py-0 w-100 form-control-lg text-md text-center form-control-plaintext'
+								type='text'
+								value='797,652'
+								readonly
+							></input>
 						</td>
 					</tr>
 				</tbody>

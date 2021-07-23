@@ -194,7 +194,7 @@ transform: rotate(90deg);
 }
 
 .card-columns {
-  column-count: 4;
+  column-count: 2;
 }
 
 .img-minix {

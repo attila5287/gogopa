@@ -1,20 +1,16 @@
 import React from "react";
+import ProfitLoss from '../components/ProfitLoss';
 import Table from '../components/Table';
-// import Combined from '../components/Combined';
-import BarChart from '../components/BarChart';
-import LineChart from '../components/LineChart';
 import Dynamic from '../components/Dynamic';
-// import DoughnutChart from '../components/DoughnutChart';
 import { Container } from "../components/Grid";
 
 const Home = () => {
   return (
 		<Container fluid>
 			<div className='mini'>
+				<ProfitLoss />
 				<Table />
 				<Dynamic />
-				<LineChart />
-				<BarChart />
 			</div>
 		</Container>
 	);
