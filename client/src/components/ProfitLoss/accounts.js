@@ -1,6 +1,7 @@
 export default function accounts() {
   return [
 		{
+			info: 'Add all that generates revenue: IRS Coronavirus Tax Relief and Economic Impact Payments',
 			icon: 'fas fa-money-bill-wave',
 			style: 'success',
 			category: 'income',
@@ -16,6 +17,7 @@ export default function accounts() {
 		},
 		{
 			icon: 'fas fa-money-check-alt',
+			info: 'Add expenses: Rent, Car payments, Insurance Premiums',
 			style: 'danger',
 			category: 'expenditure',
 			accounts: [

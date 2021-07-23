@@ -1,20 +1,47 @@
 import React from 'react';
+import Outline from '../Outline';
 import accounts from './accounts';
 // import intuit from './intuit';
 
 export default function ProfitLoss() {
   return (
 		<>
-			<h1 className='mx-2 far fa-file-alt'>  Profit & Loss</h1>
+			<p>
+				<b>
+					<i className='far fa-compass mx-1'></i>
+					Navigate
+				</b>
+			</p>
+			<select className='form-select my-2 py-2'>
+				<option hidden>Choose a report</option>
+				<option>Profit & Loss</option>
+			</select>
+			<div className='text-center'>
+				<h1 className='far fa-file-alt text-center m-0 text-center'>
+					{' '}
+					Profit & Loss
+				</h1>
+			</div>
+
+			<p>
+				<b>
+					<i className='far fa-plus-square mx-1'></i>
+					Add Item
+				</b>
+			</p>
 			<div className='card-columns'>
 				{accounts().map((a) => (
-					<div className='card bg-secondary mb-3 p-2'>
-						<div className='card-header'>
-							<span className='text-sm'>Category:</span>
-							<span className='text-xl far fa-list-alt text-capitalize'> {a.category}</span>
+					<div className='card bg-secondary mb-3 p-0'>
+						<div className='card-header d-flex justify-content-between align-items-center'>
+							<span className='mx-1 w-100'>
+								<i className='fas fa-plus'></i>{' '}
+							</span>
+							<select className='form-select rounded-2xl my-0 py-1 shadow-none'>
+								<option>{a.category}</option>
+							</select>
 						</div>
-						<div className='card-body'>
-							<select className='form-select my-2 py-2'>
+						<div className='card-body form-group'>
+							<select className='form-select rounded-2xl my-0 py-1 shadow-none'>
 								<option hidden>Choose an account</option>
 								{a.accounts.map((b) => (
 									<option>{b}</option>
@@ -22,21 +49,30 @@ export default function ProfitLoss() {
 							</select>
 
 							<input
-								className='w-100 form-control text-capitalize my-2 py-2'
+								className='form-control text-capitalize rounded-2xl my-2 py-2 w-100'
 								type='text'
-								defaultValue={'New ' + a.category}
+								placeholder={'New ' + a.category}
 							/>
 
 							<button
 								type='button'
-								className={'btn btn-lg btn-'+a.style +' btn-primary w-100 text-2xl p-0'}
+								className={
+									'btn btn-lg btn-' +
+									a.style +
+									' btn-primary w-100 text-2xl p-0'
+								}
 							>
-								<i className={a.icon + ' text-' + a.style}></i>
+								<i className={a.icon}></i>
 							</button>
+						</div>
+						<div className='card-footer blockquote-footer'>
+							<i class='text-md far fa-question-circle mx-1'></i>
+							<i>{a.info}</i>
 						</div>
 					</div>
 				))}
-			</div>
+      </div>
+      <Outline/>
 		</>
 	);
 }
