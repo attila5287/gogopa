@@ -29,9 +29,9 @@ export default function ProfitLoss() {
 					Add Item
 				</b>
 			</p>
-			<div className='card-columns'>
+			<div className='card-columns card-group'>
 				{accounts().map((a) => (
-					<div className='card bg-secondary mb-3 p-0'>
+					<div className='card bg-secondary shadow-none mb-3 p-0'>
 						<div className='card-header d-flex justify-content-between align-items-center'>
 							<span className='mx-1 w-100'>
 								<i className='fas fa-plus'></i>{' '}
