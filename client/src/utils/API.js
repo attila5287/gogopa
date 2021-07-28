@@ -2,8 +2,16 @@ import axios from "axios";
 
 export default {
   // Gets all posts
+  getFinancials: function() {
+    return axios.get("/api/financials");
+  },
+  // Gets all posts
   getPosts: function() {
     return axios.get("/api/posts");
+  },
+  // Gets the post with the given id
+  getFinancial: function(id) {
+    return axios.get('/api/financials/' + id);
   },
   // Gets the post with the given id
   getPost: function(id) {

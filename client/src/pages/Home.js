@@ -1,14 +1,15 @@
 import React from "react";
-import ProfitLoss from '../components/ProfitLoss';
 import Table from '../components/Table';
 import Dynamic from '../components/Dynamic';
 import { Container } from "../components/Grid";
+import PostsList from "../components/PostsList";
+import FinancialsList from '../components/FinancialsList';
 
 const Home = () => {
   return (
 		<Container fluid>
 			<div className='mini'>
-				<ProfitLoss />
+				<FinancialsList />
 				<Table />
 				<Dynamic />
 			</div>

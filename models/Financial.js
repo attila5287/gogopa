@@ -45,13 +45,18 @@ const FinancialSchema = new Schema({
 		type: String,
 		trim: true,
 		required: true,
-		default: 'Unnamed Company'
+		default: 'Untitled Financial'
 	},
 	company: {
 		type: String,
 		trim: true,
 		required: true,
 		default: 'Unnamed Company'
+	},
+	created: {
+		type: Date,
+		required: true,
+		default: Date.now
 	},
   categories: [ categorySchema ]
 });

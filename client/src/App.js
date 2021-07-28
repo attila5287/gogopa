@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Contact from './pages/Contact';
 import Home from "./pages/Home";
+import Financial from './pages/Financial';
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import InfoNote from './components/InfoNote';
@@ -24,6 +25,7 @@ function App() {
 						<Route exact path='/contact' component={Contact} />
 						<Route exact path='/favorites' component={FavoritesList} />
 						<Route exact path='/posts/:id' component={Detail} />
+						<Route exact path='/financials/:id' component={Financial} />
 						<Route component={NoMatch} />
 					</Switch>
 				</StoreProvider>
