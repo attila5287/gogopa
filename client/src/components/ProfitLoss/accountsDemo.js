@@ -1,4 +1,4 @@
-export default function accounts() {
+export default function accountsDemo() {
   return [
 		{
 			info: 'Add all that generates revenue: IRS Coronavirus Tax Relief and Economic Impact Payments',

@@ -3,31 +3,34 @@ const db = require('../models');
 
 // This file empties the Posts collection and inserts the books below
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/reactcms');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/gogopa');
 
-const bookSeed = [
-	{
-		title: 'Hello World',
-		author: 'admin',
-		body: "Welcome to your first post! To create posts create a title and body. Don't forget to include your screen name!",
-		date: new Date(Date.now())
-	},
-	{
-		title: 'The Second Post',
-		author: 'admin',
-		body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-		date: new Date(Date.now())
-	},
-	{
-		title: 'Another One',
-		author: 'admin',
-		body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-		date: new Date(Date.now())
-	}
+const pnlseed = [
+  {
+    company : 'Sample Outdoors',
+    accounts: [
+			{name: 'Service Income', items : [{name:'Bike Repairs',values:[{dated:'TTM', amount: 741}]}] },
+			{name: 'Sales Income', items : [{name:'total',values:[{dated:'TTM', amount: 5154845}]}] },
+			{name: 'Interest Income', items : [{name:'Wells Fargo',values:[{dated:'TTM', amount: 145}]}] },
+			{name: 'Gains', items : [] },
+			{name: 'Fees Charged', items : [{name:'POS',values:[{dated:'TTM', amount: 15254}]}] },
+			{name: 'Commissions', items : [] },
+			{name: 'Rental Income', items : [] },
+			{name: 'Cost of Goods Sold', items : [{name:'Product Purchase',values:[{dated:'TTM', amount: 1251411}]}] },
+			{name: 'Taxes', items : [{name:'IRS',values:[{dated:'TTM', amount: 110458}]}] },
+			{name: 'Marketing & Adv', items : [{name:'Radio',values:[{dated:'Radio', amount: 1150}]}] },
+			{name: 'Selling, Gen & Adm', items : [{name:'Rent',values:[{dated:'TTM', amount: 51240}]}] },
+			{name: 'Salaries & Wages', items : [{name:'Payroll',values:[{dated:'TTM', amount: 255841}]}] },
+			{name: 'Interest Expense', items : [{name:'Wells Fargo',values:[{dated:'TTM', amount: 258}]}] },
+			{name: 'Insurance', items : [{name:'Travelers',values:[{dated:'TTM', amount: 5280}]}] },
+			{name: 'Professional Fees', items : [{name:'Cleaning',values:[{dated:'TTM', amount: 1857}]}] },
+			{name: 'Telecommunication', items : [{name:'TMobile',values:[{dated:'TTM', amount: 1289}]}] },
+    ],
+  },
 ];
 
-db.Post.remove({})
-	.then(() => db.Post.collection.insertMany(bookSeed))
+db.Financial.collection
+	.insertMany(pnlseed)
 	.then((data) => {
 		console.log(data.result.n + ' records inserted!');
 		process.exit(0);

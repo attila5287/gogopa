@@ -1,6 +1,6 @@
 import React from 'react';
 import Outline from '../Outline';
-import accounts from './accounts';
+import accountsDemo from './accountsDemo';
 // import intuit from './intuit';
 
 export default function ProfitLoss() {
@@ -27,11 +27,18 @@ export default function ProfitLoss() {
 				<b>
 					<i className='far fa-plus-square mx-1'></i>
 					Add Item
+					<p>
+						<i className=' mx-2'>
+							<i className='fas fa-info-circle'></i>
+							(items are lines on Profit and Loss or similar statement-style
+							reports and could only be written under an account)
+						</i>
+					</p>
 				</b>
 			</p>
-			<div className='card-columns card-group'>
-				{accounts().map((a) => (
-					<div className='card bg-secondary shadow-none mb-3 p-0'>
+			<div className='card-columns d-flex align-items-start'>
+				{accountsDemo().map((a) => (
+					<div className='card bg-secondary shadow-none mb-3 w-100'>
 						<div className='card-header d-flex justify-content-between align-items-center'>
 							<span className='mx-1 w-100'>
 								<i className='fas fa-plus'></i>{' '}
@@ -71,8 +78,8 @@ export default function ProfitLoss() {
 						</div>
 					</div>
 				))}
-      </div>
-      <Outline/>
+			</div>
+			<Outline />
 		</>
 	);
 }

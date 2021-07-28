@@ -1,5 +1,5 @@
 import React from 'react';
-import accounts from '../ProfitLoss/accounts';
+import accountsDemo from '../ProfitLoss/accountsDemo';
 
 export default function Outline(){
 	return (
@@ -11,7 +11,7 @@ export default function Outline(){
 				</b>
 			</p>
 			<div className='row no-gutters'>
-				{accounts().map((a) => (
+        { accountsDemo().map( ( a ) => (
 					<div className='col-6'>
 						<h1 className='d-flex flex-row align-items-start'>
 							<i className='far fa-caret-square-down text-capitalize'>
@@ -31,25 +31,26 @@ export default function Outline(){
 							))}
 							<li className='list-group-item py-0 my-0 border-0'>
 								<h5 className=''>
-									<div class='input-group mb-3'>
-										<div class='input-group-prepend'>
+									<div className='input-group mb-3'>
+										<div className='input-group-prepend'>
 											<button
-												class='btn btn-secondary disabled rounded-lg shadow-none py-2 px-2 h-100'
+												className='btn btn-secondary disabled rounded-lg shadow-none py-2 px-0 h-100'
 												type='button'
 											>
-												<i className='text-xl fas fa-caret-square-right mx-1'></i>
+												<i className='text-lg fas fa-caret-square-right mx-1'></i>
+												<span className='mx-1'></span>
 											</button>
 										</div>
 										<input
 											type='text'
-											class='form-control py-2 px-3'
-											placeholder={'New ' + a.category + ' acct.'}
-											aria-label={'New ' + a.category + ' acct.'}
+											className='form-control py-2 px-3'
+											placeholder={'New account under ' + a.category}
+											aria-label={'New account under ' + a.category}
 											aria-describedby='basic-addon2'
 										></input>
-										<div class='input-group-append'>
+										<div className='input-group-append'>
 											<button
-												class='btn btn-outline-primary rounded-lg shadow-none py-2 px-2 h-100'
+												className='btn btn-outline-primary rounded-lg shadow-none py-2 px-2 h-100'
 												type='button'
 											>
 												<i className='fas fa-plus mx-1'></i>
