@@ -1,7 +1,8 @@
 import React from 'react';
 import accountsDemo from '../ProfitLoss/accountsDemo';
 
-export default function Outline(){
+
+export default function Outline () {
 	return (
 		<>
 			<p>
@@ -11,7 +12,7 @@ export default function Outline(){
 				</b>
 			</p>
 			<div className='row no-gutters'>
-        { accountsDemo().map( ( a ) => (
+				{accountsDemo().map((a) => (
 					<div className='col-6'>
 						<h1 className='d-flex flex-row align-items-start'>
 							<i className='far fa-caret-square-down text-capitalize'>
@@ -37,8 +38,8 @@ export default function Outline(){
 												className='btn btn-secondary disabled rounded-lg shadow-none py-2 px-0 h-100'
 												type='button'
 											>
-												<i className='text-lg fas fa-caret-square-right mx-1'></i>
-												<span className='mx-1'></span>
+                        <i className='text-lg fas fa-caret-square-right mx-1'></i>
+                        <span className="mx-1"></span>
 											</button>
 										</div>
 										<input
