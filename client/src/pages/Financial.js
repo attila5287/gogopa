@@ -41,46 +41,76 @@ const Financial = props => {
 					</Row>
 					<Row>
 						<Col size='md-10 md-offset-1'>
-							<div>
-								<h1>Content:</h1>
-								<div>
-									{state.currentFinancial.categories.map((c) => (
-										<>
-											<h1>
-												<i className='far fa-caret-square-down mx-1'></i>
-												{c.name}
-											</h1>
-											<div>
+							<div className='table-responsive shadow rounded-xl'>
+								<table className='table table-sm'>
+									<thead className='table-dark text-light py-5'>
+										<tr>
+											<td className='text-center text-primary align-bottom'>
+												{state.currentFinancial.title}
+											</td>
+											{state.currentFinancial.categories[0]?.accounts[0]?.items[0]?.values?.map(
+												(v, i) => (
+													<td></td>
+												)
+											)}
+										</tr>
+									</thead>
+									<thead className='table-dark text-light py-5'>
+										<tr>
+											<td className='text-center text-primary align-top'>
+												{state.currentFinancial.company}
+											</td>
+											{state.currentFinancial.categories[0]?.accounts[0]?.items[0]?.values?.map(
+												(v) => (
+													<td>{v.dated}</td>
+												)
+											)}
+										</tr>
+									</thead>
+									<tbody>
+										{state.currentFinancial.categories.map((c) => (
+											<>
+												<tr className='table-primary'>
+													<td className=''>
+														<i className='fas fa-caret-down'></i> 
+                            <b> { c.name } </b>
+													</td>
+												</tr>
 												{c.accounts.map((a) => (
 													<>
-														{' '}
-														<h5 className='mx-3'>
-															<i className='fas fa-caret-down mx-1'></i>
-															{a.name}
-														</h5>
-														<div className='mx-5'>
-															{a.items.map((i) => (
-																<h6>
-																	<i className='fas fa-caret-right mx-1'></i>
-                                  { i.name } :
-                                  { i.values.map(v=>(<i>{v.amount}</i>)) }
-																</h6>
-															))}
-														</div>
+														<tr>
+															<td className='align-middle px-3'>
+																<i className='fas fa-angle-down'></i>
+																<i> {a.name}</i>
+															</td>
+														</tr>
+														{a.items.map((i) => (
+															<tr>
+                                <td className='align-middle px-5'>
+                                  <b>
+                                  { i.name }
+                                </b>
+                                </td>
+																{i.values.map((v) => (
+																	<td className='align-middle'>
+																		<i>{parseInt(v.amount).toLocaleString()}</i>
+																	</td>
+																))}
+															</tr>
+														))}
 													</>
 												))}
-											</div>
-										</>
-									))}
-								</div>
+											</>
+										))}
+									</tbody>
+								</table>
 							</div>
 						</Col>
 					</Row>
 					<Row>
 						<Col size='md-2'>
 							<Link to='/'>
-								← Back to
-								<h1 className='fas fa-home'>Home</h1>
+								<h6 className='fas fa-home'>← Back to Home</h6>
 							</Link>
 						</Col>
 					</Row>
