@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Outline from '../components/Outline';
+import helpers from '../utils/helpers';
 import API from "../utils/API";
 import { useStoreContext } from "../utils/GlobalState";
 import {
@@ -23,46 +24,46 @@ const Financial = props => {
 				<Container fluid>
 					<Row>
 						<Col size='md-12'>
-							<h1>
-								{' '}
-								<i className='far fa-file'>{state.currentFinancial.title}</i>
-							</h1>
-							<h6>
-								{' '}
-								<i className='far fa-user mx-1'></i>{' '}
-								{state.currentFinancial.company}
-							</h6>
-							<h6>
-								{' '}
-								<i className='far fa-calendar'></i>{' '}
-								{state.currentFinancial.created}
-							</h6>
+							<p className='text-right'>
+								<i className='far fa-calendar mx-1'></i>
+								<b>{'Created At: '}</b>
+								{helpers.formatDate(state.currentFinancial.created)}
+							</p>
 						</Col>
 					</Row>
 					<Row>
+						<Col size='md-12'>
+							<h1 className='text-center border-bottom mb-0'>
+								<u>{state.currentFinancial.title}</u>
+							</h1>
+							<h4 className='text-center mb-0'>
+								{' '}
+								{state.currentFinancial.company}
+							</h4>
+							{state.currentFinancial.notes.map((n) => (
+								<p className='text-center mb-0'>
+									<i className='far fa-sticky-note mx-1'></i>
+									<b>
+										{n.about}
+										{': '}
+									</b>
+									{n.text}
+								</p>
+							))}
+						</Col>
+					</Row>
+
+					<Row>
 						<Col size='md-10 md-offset-1'>
-							<div className='table-responsive shadow rounded-xl'>
-								<table className='table table-sm'>
-									<thead className='table-dark text-light py-5'>
+							<div className='table-responsive rounded-xl bg-light'>
+								<table className='table table-sm table-light table-hover table-striped text-sm'>
+									<thead className=''>
 										<tr>
-											<td className='text-center text-primary align-bottom'>
-												{state.currentFinancial.title}
-											</td>
-											{state.currentFinancial.categories[0]?.accounts[0]?.items[0]?.values?.map(
-												(v, i) => (
-													<td></td>
-												)
-											)}
-										</tr>
-									</thead>
-									<thead className='table-dark text-light py-5'>
-										<tr>
-											<td className='text-center text-primary align-top'>
-												{state.currentFinancial.company}
-											</td>
-											{state.currentFinancial.categories[0]?.accounts[0]?.items[0]?.values?.map(
+											<td className='py-0 text-center text-primary'></td>
+
+											{state.currentFinancial?.categories[0]?.accounts[0]?.items[0]?.values?.map(
 												(v) => (
-													<td>{v.dated}</td>
+													<td className=''>{v.dated}</td>
 												)
 											)}
 										</tr>
@@ -70,30 +71,63 @@ const Financial = props => {
 									<tbody>
 										{state.currentFinancial.categories.map((c) => (
 											<>
-												<tr className='table-primary'>
-													<td className=''>
-														<i className='fas fa-caret-down'></i> 
-                            <b> { c.name } </b>
-													</td>
+												<tr className=''>
+													<th scope='row'>{c.name}</th>
+													<th className={helpers.styleAmount(c.sign)}>
+														<i>
+															{'$ '}
+															{c.accounts
+																?.flatMap((a) => a.items)
+																?.flatMap((i) => i.values)
+																?.flatMap((i) => i.amount).length
+																? helpers.formatAmount(
+																		c.sign,
+																		c.accounts
+																			?.flatMap((a) => a.items)
+																			?.flatMap((i) => i.values)
+																			?.flatMap((i) => i.amount)
+																			.reduce((a, c) => a + c)
+																  )
+																: 0}
+														</i>
+													</th>
 												</tr>
 												{c.accounts.map((a) => (
 													<>
 														<tr>
-															<td className='align-middle px-3'>
-																<i className='fas fa-angle-down'></i>
-																<i> {a.name}</i>
+															<th className='px-4' scope='row'>
+																{a.name}
+															</th>
+															<td
+																className={
+																	'px-4 ' +
+																	helpers.styleAmount(c.sign)
+																}
+															>
+																{'$ '}
+																{helpers.formatAmount(
+																	c.sign,
+																	a.items
+																		?.flatMap((i) => i.values)
+																		?.flatMap((i) => i.amount).length
+																		? a.items
+																				?.flatMap((i) => i.values)
+																				?.flatMap((v) => v.amount)
+																				.reduce(
+																					(accumulator, currentValue) =>
+																						accumulator + currentValue
+																				)
+																		: 0
+																)}
 															</td>
 														</tr>
 														{a.items.map((i) => (
-															<tr>
-                                <td className='align-middle px-5'>
-                                  <b>
-                                  { i.name }
-                                </b>
-                                </td>
+															<tr className=''>
+																<td className='align-middle px-5'>{i.name}</td>
 																{i.values.map((v) => (
-																	<td className='align-middle'>
-																		<i>{parseInt(v.amount).toLocaleString()}</i>
+																	<td className='align-middle px-5 '>
+																		{'$ '}
+																		{helpers.formatAmount(c.sign, v.amount)}
 																	</td>
 																))}
 															</tr>

@@ -37,7 +37,26 @@ const categorySchema = new Schema({
 		required: true,
 		default: 'New Category'
 	},
+	sign: {
+		type: String,
+		required: true,
+		default: 'plus'
+	},
 	accounts: [accountSchema]
+});
+
+
+const noteSchema = new Schema({
+	about: {
+		type: String,
+		required: true,
+		default: 'New Category'
+	},
+	text: {
+		type: String,
+		required: true,
+		default: 'plus'
+	},
 });
 
 const FinancialSchema = new Schema({
@@ -58,7 +77,8 @@ const FinancialSchema = new Schema({
 		required: true,
 		default: Date.now
 	},
-  categories: [ categorySchema ]
+  notes: [ noteSchema ],
+  categories: [ categorySchema ],
 });
 
 const Financial = mongoose.model('Financial', FinancialSchema);

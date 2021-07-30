@@ -101,6 +101,7 @@ const StoreProvider = ({ value = [], ...props }) => {
 			company: '',
 			created: '',
 			categories: [],
+			notes: [],
 		},
 		currentPost: {
 			_id: 0,

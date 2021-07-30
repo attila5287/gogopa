@@ -9,10 +9,17 @@ const pnlseed = [
 	{
 		title: 'Profit & Loss',
     company: 'Sample Outdoors',
+    notes: [
+      {
+        about : 'TTM',
+        text : 'Trailing Twelve Months',
+      }
+    ],
     created: Date.now(),
 		categories: [
 			{
 				name: 'Income',
+				sign: 'plus',
 				accounts: [
 					{
 						name: 'Service Income',
@@ -23,7 +30,8 @@ const pnlseed = [
 					{
 						name: 'Sales Income',
 						items: [
-							{ name: 'total', values: [{ dated: 'TTM', amount: 5154845 }] }
+							{ name: 'Store Sales', values: [{ dated: 'TTM', amount: 5154845 }] },
+							{ name: 'Online Sales', values: [{ dated: 'TTM', amount: 251325 }] },
 						]
 					},
 					{
@@ -43,6 +51,7 @@ const pnlseed = [
 			},
 			{
 				name: 'Expenditure',
+				sign: 'minus',
 				accounts: [
 					{
 						name: 'Cost of Goods Sold',
