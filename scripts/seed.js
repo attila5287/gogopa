@@ -5,7 +5,7 @@ const db = require('../models');
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/gogopa');
 
-const pnlseed = [
+const financials = [
 	{
 		title: 'Profit & Loss -3Y',
 		company: 'Sample Outdoors Company',
@@ -355,13 +355,165 @@ const pnlseed = [
 				]
 			}
 		]
+	},
+	{
+		title: 'Balance Sheet, 2Y ',
+		company: 'Sample Outdoors Company',
+		notes: [
+			{
+				about: 'Description',
+				text: 'Most recent accounting/calendar year with comparative previous'
+			}
+		],
+		categories: [
+			{
+				name: 'Assets',
+				sign: 'plus',
+				accounts: [
+					{
+						name: 'Current assets',
+						items: [
+							{
+								name: 'Total',
+								values: [
+									{ dated: '2020', amount: 2336392807 },
+									{ dated: '2019', amount: 2139066575 }
+								]
+							}
+						]
+					},
+					{
+						name: 'Operating assets',
+						items: [
+							{
+								name: 'Total',
+								values: [
+									{ dated: '2020', amount: 1778012688 },
+									{ dated: '2019', amount: 1484257572 }
+								]
+							}
+						]
+					},
+					{
+						name: 'Other assets',
+						items: [
+							{
+								name: 'Total',
+								items: [
+									{ dated: '2020', amount: 238958303 },
+									{ dated: '2019', amount: 181159029 }
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				name: 'Liabilities',
+				sign: 'minus',
+				accounts: [
+					{
+						name: 'Current Liabilities',
+						items: [
+							{
+								name: 'Total',
+								values: [
+									{ dated: '2020', amount: 1144967294 },
+									{ dated: '2019', amount: 1206574775 }
+								]
+							}
+						]
+					},
+					{
+						name: 'Long-term and other Liabilities',
+						items: [
+							{
+								name: 'Total',
+								values: [
+									{ dated: '2020', amount: 457321919 },
+									{ dated: '2019', amount: 548299231 }
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				name: 'Equity',
+				sign: 'minus',
+				accounts: [
+					{
+						name: 'Common Stock',
+						items: [
+							{
+								name: 'Total',
+								values: [
+									{ dated: '2020', amount: 719183000 },
+									{ dated: '2019', amount: 749178000 }
+								]
+							}
+						]
+					},
+					{
+						name: 'Other Capital',
+						items: [
+							{
+								name: 'Total',
+								values: [
+									{ dated: '2020', amount: 69921200 },
+									{ dated: '2019', amount: 183898457 }
+								]
+							}
+						]
+					},
+					{
+						name: 'Retained Earnings',
+						items: [
+							{
+								name: 'Total',
+								values: [
+									{ dated: '2020', amount: 1961541522 },
+									{ dated: '2019', amount: 1116128225 }
+								]
+							}
+						]
+					},
+					{
+						name: 'Currency translation',
+						items: [
+							{
+								name: 'Total',
+								values: [
+									{ dated: '2020', amount: 428864 },
+									{ dated: '2019', amount: 404488 }
+								]
+							}
+						]
+					},
+					{
+						name: 'Declared dividends',
+						items: [
+							{
+								name: 'Total',
+								values: [
+									{ dated: '2020', amount: 0 },
+									{ dated: '2019', amount: 0 }
+								]
+							}
+						]
+					}
+				]
+			}
+		]
 	}
 ];
+
+
 
 db
   .Financial
   .collection
-  .insertMany(pnlseed)
+  .insertMany(financials)
   .then((data) => {
     console.log(data.result.n + ' records inserted!');
     process.exit(0);
