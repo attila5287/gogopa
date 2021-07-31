@@ -7,6 +7,235 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/gogopa');
 
 const financials = [
 	{
+		_id: ObjectId('61047919962ae700040307c9'),
+		title: 'Profit & Loss TTM',
+		company: 'Sample Outdoors',
+		notes: [
+			{
+				about: 'TTM',
+				text: 'Trailing Twelve Months'
+			}
+		],
+		created: 1627683097096.0,
+		categories: [
+			{
+				name: 'Income',
+				sign: 'plus',
+				accounts: [
+					{
+						name: 'Service Income',
+						items: [
+							{
+								name: 'Bike Repairs',
+								values: [
+									{
+										dated: 'TTM',
+										amount: 741
+									}
+								]
+							}
+						]
+					},
+					{
+						name: 'Sales Income',
+						items: [
+							{
+								name: 'Store Sales',
+								values: [
+									{
+										dated: 'TTM',
+										amount: 5154845
+									}
+								]
+							},
+							{
+								name: 'Online Sales',
+								values: [
+									{
+										dated: 'TTM',
+										amount: 251325
+									}
+								]
+							}
+						]
+					},
+					{
+						name: 'Interest Income',
+						items: [
+							{
+								name: 'Wells Fargo',
+								values: [
+									{
+										dated: 'TTM',
+										amount: 145
+									}
+								]
+							}
+						]
+					},
+					{
+						name: 'Gains',
+						items: []
+					},
+					{
+						name: 'Fees Charged',
+						items: [
+							{
+								name: 'POS',
+								values: [
+									{
+										dated: 'TTM',
+										amount: 15254
+									}
+								]
+							}
+						]
+					},
+					{
+						name: 'Commissions',
+						items: []
+					},
+					{
+						name: 'Rental Income',
+						items: []
+					}
+				]
+			},
+			{
+				name: 'Expenditure',
+				sign: 'minus',
+				accounts: [
+					{
+						name: 'Cost of Goods Sold',
+						items: [
+							{
+								name: 'Product Purchase',
+								values: [
+									{
+										dated: 'TTM',
+										amount: 1251411
+									}
+								]
+							}
+						]
+					},
+					{
+						name: 'Taxes',
+						items: [
+							{
+								name: 'IRS',
+								values: [
+									{
+										dated: 'TTM',
+										amount: 110458
+									}
+								]
+							}
+						]
+					},
+					{
+						name: 'Marketing & Adv',
+						items: [
+							{
+								name: 'Radio',
+								values: [
+									{
+										dated: 'Radio',
+										amount: 1150
+									}
+								]
+							}
+						]
+					},
+					{
+						name: 'Selling, Gen & Adm',
+						items: [
+							{
+								name: 'Rent',
+								values: [
+									{
+										dated: 'TTM',
+										amount: 51240
+									}
+								]
+							}
+						]
+					},
+					{
+						name: 'Salaries & Wages',
+						items: [
+							{
+								name: 'Payroll',
+								values: [
+									{
+										dated: 'TTM',
+										amount: 255841
+									}
+								]
+							}
+						]
+					},
+					{
+						name: 'Interest Expense',
+						items: [
+							{
+								name: 'Wells Fargo',
+								values: [
+									{
+										dated: 'TTM',
+										amount: 258
+									}
+								]
+							}
+						]
+					},
+					{
+						name: 'Insurance',
+						items: [
+							{
+								name: 'Travelers',
+								values: [
+									{
+										dated: 'TTM',
+										amount: 5280
+									}
+								]
+							}
+						]
+					},
+					{
+						name: 'Professional Fees',
+						items: [
+							{
+								name: 'Cleaning',
+								values: [
+									{
+										dated: 'TTM',
+										amount: 1857
+									}
+								]
+							}
+						]
+					},
+					{
+						name: 'Telecommunication',
+						items: [
+							{
+								name: 'TMobile',
+								values: [
+									{
+										dated: 'TTM',
+										amount: 1289
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
 		title: 'Profit & Loss -3Y',
 		company: 'Sample Outdoors Company',
 		notes: [

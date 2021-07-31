@@ -53,7 +53,7 @@ function Nav() {
 					<span className='text-sm'></span>
 				</a>
 			</nav>
-			<nav className='navbar navbar-expand navbar-dark bg-primary pt-0 pb-2'></nav>
+			<nav className='navbar navbar-expand navbar-dark bg-primary pt-0 pb-1'></nav>
 		</>
 	);
 }

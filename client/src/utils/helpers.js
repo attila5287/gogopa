@@ -46,18 +46,17 @@ module.exports = {
     const formatAmount = ( sign, amount ) => {
       // format large numbers with commas
       if ( sign == 'minus' ) {
-        return '($' + parseInt( amount ).toLocaleString() + ')'
+        return '$ (' + parseInt( amount ).toLocaleString() + ')'
       } else {
         return '$'+parseInt( amount ).toLocaleString()
       }
     };
 
-
     const datesArr = c.accounts
-					?.flatMap((a) => a.items)
-					?.flatMap((i) => i.values)
-      ?.flatMap( ( i ) => i.dated );
-    
+            ?.flatMap((a) => a.items)
+            ?.flatMap( ( i ) => i.values )
+            ?.flatMap( ( i ) => i.dated );
+     
     const datesSet = new Set( datesArr );
     const dates = Array.from( datesSet );
   

@@ -20,7 +20,7 @@ const Financial = (props) => {
 	}, []);
 
 	return (
-		<div className="mini">
+		<div className='mini'>
 			{state.currentFinancial ? (
 				<Container fluid>
 					<Row>
@@ -78,10 +78,7 @@ const Financial = (props) => {
 
 											{state.currentFinancial?.categories[0]?.accounts[0]?.items[0]?.values?.map(
 												(v) => (
-													<th
-														scope='column'
-														className='py-0 text-center'
-													>
+													<th scope='column' className='py-0 text-center'>
 														{v.dated}
 													</th>
 												)
@@ -92,25 +89,23 @@ const Financial = (props) => {
 										{state.currentFinancial.categories.map((c) => (
 											<>
 												<tr className=''>
-													<td scope='row'>{c.name}</td>
+													<td>{c.name}</td>
 
 													{c?.accounts
 														? helpers
 																.groupByCategory(c)
-																.map((t) => <td>{t}</td>)
+																.map((t) => (
+																	<td className={helpers.styleAmount(c.sign)}>
+																		{t}
+																	</td>
+																))
 														: 0}
 												</tr>
 												{c.accounts.map((a) => (
 													<>
 														<tr>
-															<td className='px-4'>
-																{a.name}
-															</td>
-															<td
-																className={
-																	'px-4 ' + helpers.styleAmount(c.sign)
-																}
-															>
+															<td className='px-4'>{a.name}</td>
+															<td className={helpers.styleAmount(c.sign)}>
 																{'$ '}
 																{helpers.formatAmount(
 																	c.sign,
@@ -130,9 +125,9 @@ const Financial = (props) => {
 														</tr>
 														{a.items.map((i) => (
 															<tr className=''>
-																<td className='align-middle px-5'>{i.name}</td>
+																<td className='align-middle'>{i.name}</td>
 																{i.values.map((v) => (
-																	<td className='align-middle px-5 '>
+																	<td className='align-middle'>
 																		{'$ '}
 																		{helpers.formatAmount(c.sign, v.amount)}
 																	</td>
