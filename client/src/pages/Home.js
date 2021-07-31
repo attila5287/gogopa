@@ -10,8 +10,6 @@ const Home = () => {
 		<Container fluid>
 			<div className='mini'>
 				<FinancialsList />
-				<Table />
-				<Dynamic />
 			</div>
 		</Container>
 	);

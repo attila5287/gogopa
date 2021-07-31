@@ -7,15 +7,15 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/gogopa');
 
 const pnlseed = [
 	{
-		title: 'Profit & Loss',
-    company: 'Sample Outdoors',
-    notes: [
-      {
-        about : 'TTM',
-        text : 'Trailing Twelve Months',
-      }
-    ],
-    created: Date.now(),
+		title: 'Profit & Loss -3Y',
+		company: 'Sample Outdoors Company',
+		notes: [
+			{
+				about: 'Time Series',
+				text: 'Last Three Years'
+			}
+		],
+		created: Date.now(),
 		categories: [
 			{
 				name: 'Income',
@@ -24,29 +24,130 @@ const pnlseed = [
 					{
 						name: 'Service Income',
 						items: [
-							{ name: 'Bike Repairs', values: [{ dated: 'TTM', amount: 741 }] }
+							{
+								name: 'Bike Repairs',
+								values: [
+									{
+										dated: '2020',
+										amount: 741
+									},
+									{
+										dated: '2019',
+										amount: 955
+									},
+									{
+										dated: '2018',
+										amount: 1250
+									}
+								]
+							}
 						]
 					},
 					{
 						name: 'Sales Income',
 						items: [
-							{ name: 'Store Sales', values: [{ dated: 'TTM', amount: 5154845 }] },
-							{ name: 'Online Sales', values: [{ dated: 'TTM', amount: 251325 }] },
+							{
+								name: 'Store Sales',
+								values: [
+									{
+										dated: '2020',
+										amount: 5154845
+									},
+									{
+										dated: '2019',
+										amount: 5751421
+									},
+									{
+										dated: '2018',
+										amount: 5987121
+									}
+								]
+							},
+							{
+								name: 'Online Sales',
+								values: [
+									{
+										dated: '2020',
+										amount: 551254
+									},
+									{
+										dated: '2019',
+										amount: 221485
+									},
+									{
+										dated: '2018',
+										amount: 204125
+									}
+								]
+							}
 						]
 					},
 					{
 						name: 'Interest Income',
 						items: [
-							{ name: 'Wells Fargo', values: [{ dated: 'TTM', amount: 145 }] }
+							{
+								name: 'Wells Fargo',
+								values: [
+									{
+										dated: '2020',
+										amount: 145
+									},
+									{
+										dated: '2019',
+										amount: 145
+									},
+									{
+										dated: '2018',
+										amount: 199
+									}
+								]
+							}
 						]
 					},
-					{ name: 'Gains', items: [] },
 					{
 						name: 'Fees Charged',
-						items: [{ name: 'POS', values: [{ dated: 'TTM', amount: 15254 }] }]
+						items: [
+							{
+								name: 'Bike Late Fees',
+								values: [
+									{
+										dated: '2020',
+										amount: 1540
+									},
+									{
+										dated: '2019',
+										amount: 1860
+									},
+									{
+										dated: '2018',
+										amount: 2280
+									}
+								]
+							}
+						]
 					},
-					{ name: 'Commissions', items: [] },
-					{ name: 'Rental Income', items: [] }
+					{
+						name: 'Rental Income',
+						items: [
+							{
+								name: 'Bike Rental',
+								values: [
+									{
+										dated: '2020',
+										amount: 24582
+									},
+									{
+										dated: '2019',
+										amount: 28451
+									},
+									{
+										dated: '2018',
+										amount: 32580
+									}
+								]
+							}
+						]
+					}
 				]
 			},
 			{
@@ -58,52 +159,197 @@ const pnlseed = [
 						items: [
 							{
 								name: 'Product Purchase',
-								values: [{ dated: 'TTM', amount: 1251411 }]
+								values: [
+									{
+										dated: '2020',
+										amount: 2251411
+									},
+									{
+										dated: '2019',
+										amount: 3251411
+									},
+									{
+										dated: '2018',
+										amount: 3771151
+									}
+								]
 							}
 						]
 					},
 					{
 						name: 'Taxes',
-						items: [{ name: 'IRS', values: [{ dated: 'TTM', amount: 110458 }] }]
+						items: [
+							{
+								name: 'IRS',
+								values: [
+									{
+										dated: '2020',
+										amount: 110458
+									},
+									{
+										dated: '2019',
+										amount: 155411
+									},
+									{
+										dated: '2018',
+										amount: 194310
+									}
+								]
+							}
+						]
 					},
 					{
 						name: 'Marketing & Adv',
 						items: [
-							{ name: 'Radio', values: [{ dated: 'Radio', amount: 1150 }] }
+							{
+								name: 'Radio Commercials',
+								values: [
+									{
+										dated: '2020',
+										amount: 1150
+									},
+									{
+										dated: '2019',
+										amount: 1350
+									},
+									{
+										dated: '2018',
+										amount: 1750
+									}
+								]
+							}
 						]
 					},
 					{
 						name: 'Selling, Gen & Adm',
-						items: [{ name: 'Rent', values: [{ dated: 'TTM', amount: 51240 }] }]
+						items: [
+							{
+								name: 'Rent',
+								values: [
+									{
+										dated: '2020',
+										amount: 175500
+									},
+									{
+										dated: '2019',
+										amount: 166250
+									},
+									{
+										dated: '2018',
+										amount: 151240
+									}
+								]
+							}
+						]
 					},
 					{
 						name: 'Salaries & Wages',
 						items: [
-							{ name: 'Payroll', values: [{ dated: 'TTM', amount: 255841 }] }
+							{
+								name: 'Payroll',
+								values: [
+									{
+										dated: '2020',
+										amount: 175250
+									},
+									{
+										dated: '2019',
+										amount: 375245
+									},
+									{
+										dated: '2018',
+										amount: 455841
+									}
+								]
+							}
 						]
 					},
 					{
 						name: 'Interest Expense',
 						items: [
-							{ name: 'Wells Fargo', values: [{ dated: 'TTM', amount: 258 }] }
+							{
+								name: 'Wells Fargo',
+								values: [
+									{
+										dated: '2020',
+										amount: 258
+									},
+									{
+										dated: '2019',
+										amount: 390
+									},
+									{
+										dated: '2018',
+										amount: 580
+									}
+								]
+							}
 						]
 					},
 					{
 						name: 'Insurance',
 						items: [
-							{ name: 'Travelers', values: [{ dated: 'TTM', amount: 5280 }] }
+							{
+								name: 'Travelers',
+								values: [
+									{
+										dated: '2020',
+										amount: 5280
+									},
+									{
+										dated: '2019',
+										amount: 15280
+									},
+									{
+										dated: '2018',
+										amount: 25220
+									}
+								]
+							}
 						]
 					},
 					{
 						name: 'Professional Fees',
 						items: [
-							{ name: 'Cleaning', values: [{ dated: 'TTM', amount: 1857 }] }
+							{
+								name: 'Accountant',
+								values: [
+									{
+										dated: '2020',
+										amount: 2750
+									},
+									{
+										dated: '2019',
+										amount: 3250
+									},
+									{
+										dated: '2018',
+										amount: 3750
+									}
+								]
+							}
 						]
 					},
 					{
 						name: 'Telecommunication',
 						items: [
-							{ name: 'TMobile', values: [{ dated: 'TTM', amount: 1289 }] }
+							{
+								name: 'TMobile',
+								values: [
+									{
+										dated: '2020',
+										amount: 1289
+									},
+									{
+										dated: '2019',
+										amount: 1355
+									},
+									{
+										dated: '2018',
+										amount: 1475
+									}
+								]
+							}
 						]
 					}
 				]
@@ -112,13 +358,15 @@ const pnlseed = [
 	}
 ];
 
-db.Financial.collection
-	.insertMany(pnlseed)
-	.then((data) => {
-		console.log(data.result.n + ' records inserted!');
-		process.exit(0);
-	})
-	.catch((err) => {
-		console.error(err);
-		process.exit(1);
-	});
+db
+  .Financial
+  .collection
+  .insertMany(pnlseed)
+  .then((data) => {
+    console.log(data.result.n + ' records inserted!');
+    process.exit(0);
+  })
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });

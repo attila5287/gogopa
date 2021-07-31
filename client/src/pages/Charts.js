@@ -1,5 +1,5 @@
 import { Animated } from 'react-animated-css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Row, Container } from '../components/Grid';
 import Dynamic from '../components/Dynamic';
@@ -11,6 +11,7 @@ import { SET_CURRENT_FINANCIAL } from '../utils/actions';
 import { Doughnut, Bar } from '@iftek/react-chartjs-3';
 
 const rand = () => Math.floor(Math.random() * 3) + 1;
+
 
 const myData = [
 	{
@@ -43,7 +44,6 @@ const myData = [
 		borderWidth: 1
 	}
 ];
-
 const genData = () => ({
 	labels: ['Q1', 'Q2', 'Q3', 'Q4'],
 	// number (pixels) or 'flex'
@@ -57,7 +57,7 @@ const options = {
 		yAxes: [
 			{
 				ticks: {
-					beginAtZero: true
+					beginAtZero: false
 				}
 			}
 		]
@@ -74,14 +74,21 @@ const Charts = (props) => {
 			)
 			.catch((err) => console.log(err));
 	}, []);
+	const [data, setData] = useState(genData());
 
+	useEffect(() => {
+		const interval = setInterval(() => setData(genData()), 1000);
+
+		return () => clearInterval(interval);
+  }, [] );
+  
 	return (
-		<>
+		<div className='mini'>
 			{state.currentFinancial ? (
 				<Container fluid>
 					<Row>
 						<Col size='md-12'>
-							<Animated animationIn='slideInRight'>
+							<Animated animationIn='slideInRight' className='mb-2'>
 								<Link
 									to={'/financials/' + state.currentFinancial._id}
 									className='btn btn-primary w-100 btn-sm'
@@ -89,56 +96,136 @@ const Charts = (props) => {
 									<small className='text-lg fas fa-donate mx-1'>Report</small>
 								</Link>
 							</Animated>
-							<p className='text-right'>
-								<i className='far fa-calendar mx-1'></i>
-								<b>{'Created At: '}</b>
-								{helpers.formatDate(state.currentFinancial.created)}
-							</p>
-						</Col>
-					</Row>
-					<Row>
-						<Col size='md-12'>
-							<h1 className='border-bottom mb-0'>
-								<i className='far fa-file mx-1'></i>
-								{state.currentFinancial.title}
-							</h1>
-							<h4 className='mb-0'>
-								<i className='fas fa-users mx-1'></i>
-								{state.currentFinancial.company}
-							</h4>
-							{state.currentFinancial.notes.map((n) => (
-								<p className='mb-0'>
-									<i className='fas fa-sticky-note mx-1'></i>
-									<b>
-										{n.about}
-										{': '}
-									</b>
-									{n.text}
-								</p>
-							))}
+
+							<div className='row'>
+								<Animated animationIn='slideInLeft' className='col'>
+									<ul className='w-100 bg-secondary list-group text-sm shadow-none'>
+										<li className='list-group-item py-0'>
+											<i className='far fa-calendar mx-1'></i>
+											{'Created At: '}
+											{helpers.formatDate(state.currentFinancial.created)}
+										</li>
+										<li className='list-group-item py-0'>
+											<i className='far fa-file mx-1'></i>
+											{state.currentFinancial.title}
+										</li>
+										<li className='list-group-item py-0'>
+											<i className='far fa-user mx-1'></i>
+											{state.currentFinancial.company}
+										</li>
+									</ul>
+								</Animated>
+
+								<Animated animationIn='slideInRight' className='col'>
+									<ul className='w-100 bg-secondary list-group text-sm shadow-none'>
+										{state.currentFinancial.notes.map((n, i) => (
+											<>
+												<li className='list-group-item' key={i}>
+													<i className='far fa-sticky-note mx-1'></i>
+													{n.about}
+													{': '}
+													{n.text}
+												</li>
+											</>
+										))}
+									</ul>
+								</Animated>
+							</div>
 						</Col>
 					</Row>
 
 					<Row>
-            <Col size='md-12'>
-              <Dynamic/> 
+						<Col size='md-12'>
+							<Bar data={data} options={options} />
+							<div className='row'>
+								<div className='col-6'>
+									<Doughnut
+										data={{
+											title: data.datasets[1].label,
+											labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+
+											datasets: [
+												{
+													data: data.datasets[1].data,
+													backgroundColor: [
+														'rgba(225, 122, 192, 0.50)',
+														'rgba(54, 162, 235, 0.50)',
+														'rgba(91,98,244,0.5)',
+														'rgba(155, 206, 186, 0.50)'
+													],
+													borderColor: ['rgba(217,227,241,1)'],
+													borderWidth: 4
+												}
+											]
+										}}
+										options={{
+											plugins: {
+												title: {
+													position: 'top',
+													align: 'center',
+													display: true,
+													text: data.datasets[1].label
+												},
+												legend: {
+													position: 'bottom',
+													display: true
+												}
+											}
+										}}
+									/>
+								</div>
+								<div className='col-6'>
+									<Doughnut
+										data={{
+											title: data.datasets[0].label,
+											labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+
+											datasets: [
+												{
+													data: data.datasets[0].data,
+													backgroundColor: [
+														'rgba(225, 122, 192, 0.50)',
+														'rgba(54, 162, 235, 0.50)',
+														'rgba(91,98,244,0.5)',
+														'rgba(155, 206, 186, 0.50)'
+													],
+													borderColor: ['rgba(217,227,241,1)'],
+													borderWidth: 4
+												}
+											]
+										}}
+										options={{
+											plugins: {
+												title: {
+													position: 'top',
+													align: 'center',
+													display: true,
+													text: data.datasets[0].label
+												},
+												legend: {
+													position: 'bottom',
+													display: true
+												}
+											}
+										}}
+									/>
+								</div>
+							</div>
 						</Col>
-          </Row>
-          
+					</Row>
+
 					<Row>
 						<Col size='md-2'>
 							<Link to='/'>
 								<h6 className='fas fa-home'>← Back to Home</h6>
 							</Link>
 						</Col>
-          </Row>
-          
-
+					</Row>
 				</Container>
 			) : (
 				<div>loading...</div>
 			)}
-		</>
+		</div>
 	);
 };
 

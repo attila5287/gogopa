@@ -3,26 +3,26 @@ import { Animated } from 'react-animated-css';
 
 export default function AppLogo() {
   return (
-		<span className='text-xl'>
+		<span className='mx-1 text-md'>
 			<Animated
-				animationIn='slideInUp'
+				animationIn='slideInLeft'
 				isVisible={true}
-				className='fab fa-glide-g text-info'
+				className='fab fa-gofore text-light'
 			></Animated>
 			<Animated
-				className='fas fa-chart-pie text-info'
+				className='mx-1 fas fa-chart-pie text-light'
 				animationIn='rotateIn'
-				animationInDelay={1000}
+				animationInDelay={2000}
 				isVisible={true}
 			></Animated>
 			<Animated
-				className='fab fa-glide-g text-green'
-				animationIn='slideInDown'
+				className='fab fa-gofore text-light'
+				animationIn='slideInRight'
 				isVisible={true}
 			></Animated>
 
 			<Animated
-				className='fas fa-donate text-green'
+				className='mx-1 fas fa-donate text-light'
 				animationInDelay={1000}
 				animationIn='flipInY'
 				isVisible={true}

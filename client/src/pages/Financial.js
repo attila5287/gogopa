@@ -20,7 +20,7 @@ const Financial = (props) => {
 	}, []);
 
 	return (
-		<>
+		<div className="mini">
 			{state.currentFinancial ? (
 				<Container fluid>
 					<Row>
@@ -70,12 +70,20 @@ const Financial = (props) => {
 							<div className='table-responsive rounded-xl bg-light'>
 								<table className='table table-sm table-light table-hover table-striped text-sm'>
 									<thead className=''>
-										<tr>
-											<td className='py-0 text-center text-primary'></td>
+										<tr class='table-secondary table-inverse'>
+											<th
+												scope='column'
+												className='py-0 text-center text-primary'
+											></th>
 
 											{state.currentFinancial?.categories[0]?.accounts[0]?.items[0]?.values?.map(
 												(v) => (
-													<td className=''>{v.dated}</td>
+													<th
+														scope='column'
+														className='py-0 text-center'
+													>
+														{v.dated}
+													</th>
 												)
 											)}
 										</tr>
@@ -84,32 +92,20 @@ const Financial = (props) => {
 										{state.currentFinancial.categories.map((c) => (
 											<>
 												<tr className=''>
-													<th scope='row'>{c.name}</th>
-													<th className={helpers.styleAmount(c.sign)}>
-														<i>
-															{'$ '}
-															{c.accounts
-																?.flatMap((a) => a.items)
-																?.flatMap((i) => i.values)
-																?.flatMap((i) => i.amount).length
-																? helpers.formatAmount(
-																		c.sign,
-																		c.accounts
-																			?.flatMap((a) => a.items)
-																			?.flatMap((i) => i.values)
-																			?.flatMap((i) => i.amount)
-																			.reduce((a, c) => a + c)
-																  )
-																: 0}
-														</i>
-													</th>
+													<td scope='row'>{c.name}</td>
+
+													{c?.accounts
+														? helpers
+																.groupByCategory(c)
+																.map((t) => <td>{t}</td>)
+														: 0}
 												</tr>
 												{c.accounts.map((a) => (
 													<>
 														<tr>
-															<th className='px-4' scope='row'>
+															<td className='px-4'>
 																{a.name}
-															</th>
+															</td>
 															<td
 																className={
 																	'px-4 ' + helpers.styleAmount(c.sign)
@@ -163,7 +159,7 @@ const Financial = (props) => {
 			) : (
 				<div>loading...</div>
 			)}
-		</>
+		</div>
 	);
 };
 
