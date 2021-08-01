@@ -88,13 +88,27 @@ const Charts = (props) => {
 				<Container fluid>
 					<Row>
 						<Col size='md-12'>
-							<Animated animationIn='slideInRight' className='mb-2'>
+							<Animated
+								animationIn='slideInLeft'
+								className='btn btn-group w-100 my-0'
+							>
+								<Link to='/' className='btn btn-outline-info w-100 rounded-2xl'>
+									<span className='d-flex flex-row align-items-center'>
+										<i className='text-xl far fa-list-alt mx-1'></i>
+										Financials
+									</span>
+								</Link>
 								<Link
 									to={'/financials/' + state.currentFinancial._id}
-									className='btn btn-primary w-100 btn-sm'
+									className='btn btn-outline-warning w-100'
 								>
-									<small className='text-lg fas fa-donate mx-1'>Report</small>
+									<i className='text-xl far fa-file mx-1'></i>
+									Reports
 								</Link>
+								<div className='btn btn-outline-dark border-0 w-100 rounded-2xl disabled'>
+									<i className='text-xl fas fa-chart-line mx-1'></i>
+									Charts
+								</div>
 							</Animated>
 
 							<div className='row'>
@@ -154,7 +168,7 @@ const Charts = (props) => {
 														'rgba(155, 206, 186, 0.50)'
 													],
 													borderColor: ['rgba(217,227,241,1)'],
-													borderWidth: 4
+													borderWidth: 0
 												}
 											]
 										}}
@@ -190,7 +204,7 @@ const Charts = (props) => {
 														'rgba(155, 206, 186, 0.50)'
 													],
 													borderColor: ['rgba(217,227,241,1)'],
-													borderWidth: 4
+													borderWidth: 0
 												}
 											]
 										}}

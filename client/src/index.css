@@ -147,7 +147,7 @@ a.nav-a:focus {
 }
 
 .border-thk {
-  border-width: 0.5rem;
+  border-width: 0.75rem;
 }
 
 .opac-30 {
@@ -269,7 +269,7 @@ transform: rotate(90deg);
   font-size: 1.50rem;
 }
 
-
+/* 
 thead th:first-child {
   border-radius: 0.5rem 0 0  0.5rem;
 }
@@ -282,7 +282,7 @@ tbody th:first-child {
 }
 tbody td:last-child {
   border-radius: 0 0.5rem  0.5rem  0;
-}
+} */
 
 .add-anime {
   transition: ease-in 0.25s;

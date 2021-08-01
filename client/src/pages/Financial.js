@@ -24,27 +24,24 @@ const Financial = (props) => {
 			{state.currentFinancial ? (
 				<Container fluid>
 					<Row>
-						<Col size='md-12'>
-							<p className='text-center mb-0'>
-								<i className='text-xl far fa-compass'></i> Go To:{' '}
-							</p>
+						<Col size='xs-8 xs-offset-2'>
 							<Animated
 								animationIn='slideInRight'
 								className='btn btn-group w-100 my-0'
 							>
-								<Link to='/' className='btn btn-info w-100 rounded-2xl'>
+								<Link to='/' className='btn btn-outline-info w-100 rounded-2xl'>
 									<span className='d-flex flex-row align-items-center'>
 										<i className='text-xl far fa-list-alt mx-1'></i>
 										Financials
 									</span>
 								</Link>
-								<div className='btn btn-outline-danger w-100 disabled'>
+								<div className='btn btn-outline-dark border-0  w-100 disabled'>
 									<i className='text-xl far fa-file mx-1'></i>
 									Reports
 								</div>
 								<Link
 									to={'/charts/' + state.currentFinancial._id}
-									className='btn btn-success w-100 rounded-2xl'
+									className='btn btn-outline-success w-100 rounded-2xl'
 								>
 									<i className='text-xl fas fa-chart-line mx-1'></i>
 									Charts
@@ -52,54 +49,44 @@ const Financial = (props) => {
 							</Animated>
 
 							<Animated animationIn='slideInLeft'>
-								<p className=' mb-0'>
+								<div className=' mb-0'>
 									<i className='far fa-calendar fa-fw mx-1'></i>
 									<b>{'Created At: '}</b>
 									{helpers.formatDate(state.currentFinancial.created)}
-								</p>
-							</Animated>
-							{state.currentFinancial.notes.map((n, i) => (
-								<div className='d-flex flex-row justify-content-start mb-0'>
-									<Animated
-										animationIn='slideInLeft'
-										animationInDelay={i * 250}
-									>
-										<p>
-											<i className='far fa-sticky-note fa-fw mx-1'></i>
-											<b>
-												{n.about}
-												{' : '}
-											</b>
-										</p>
-									</Animated>
-									<Animated
-										animationIn='slideInRight'
-										animationInDelay={i * 500}
-									>
-										<p className='mb-0'>{n.text}</p>
-									</Animated>
-								</div>
-							))}
 
-							<Animated animationIn='slideInLeft'>
-								<h5 className='text-xl text-dark text-center mb-0'>
-									{state.currentFinancial.title}
-								</h5>
+									{state.currentFinancial.notes.map((n, i) => (
+										<>
+											<span>
+												<i className='far fa-sticky-note fa-fw mx-1'></i>
+												<b>
+													{n.about}
+													{' : '}
+												</b>
+											</span>
+											<i className='mb-0'>{n.text}</i>
+										</>
+									))}
+								</div>
 							</Animated>
-							<Animated animationIn='slideInRight'>
-								<p className='text-center mb-0'>
-									{' '}
+							<hr/>
+							<Animated animationInDelay={2000} animationIn='zoomIn'>
+								<h5 className='text-dark text-center mb-0 border-bottom border-dark mx-5'>
+									<b>{state.currentFinancial.title}</b>
+								</h5>
+								<p className='text-sm text-center mb-1'>
+                  <b>
 									{state.currentFinancial.company}
+                  </b>
 								</p>
 							</Animated>
 						</Col>
 					</Row>
 					<Row>
-						<Col size='md-10 md-offset-1'>
-							<div className='table-responsive rounded-xl bg-light'>
-								<table className='table table-sm table-light table-hover table-striped text-sm'>
-									<thead className=''>
-										<tr class='table-secondary table-inverse'>
+						<Col size='md-10 md-offset-1' className="text-center">
+							<div className='table-responsive rounded-xl'>
+								<table className='table table-sm table-light table-hover table-striped table-borderless text-sm'>
+									<thead>
+										<tr>
 											<th
 												scope='column'
 												className='py-0 text-center text-primary'
@@ -154,7 +141,7 @@ const Financial = (props) => {
 														</tr>
 														{a.items.map((i) => (
 															<tr className=''>
-																<td className='align-middle'>{i.name}</td>
+																<td className='px-5 align-middle'>{i.name}</td>
 																{i.values.map((v) => (
 																	<td className='align-middle'>
 																		{'$ '}
