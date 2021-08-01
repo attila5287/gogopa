@@ -3,7 +3,7 @@ import AppLogo from "../AppLogo";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Animated } from 'react-animated-css';
 
-function Nav() {
+  function Nav() {
   const [store] = useStoreContext();
 
   return (
@@ -53,7 +53,7 @@ function Nav() {
 					<span className='text-sm'></span>
 				</a>
 			</nav>
-			<nav className='navbar navbar-expand navbar-dark bg-primary pt-0 pb-1'></nav>
+			<nav className='navbar navbar-expand navbar-dark bg-primary py-1'></nav>
 		</>
 	);
 }

@@ -25,44 +25,73 @@ const Financial = (props) => {
 				<Container fluid>
 					<Row>
 						<Col size='md-12'>
-							<Animated animationIn='slideInRight'>
+							<p className='text-center mb-0'>
+								<i className='text-xl far fa-compass'></i> Go To:{' '}
+							</p>
+							<Animated
+								animationIn='slideInRight'
+								className='btn btn-group w-100 my-0'
+							>
+								<Link to='/' className='btn btn-info w-100 rounded-2xl'>
+									<span className='d-flex flex-row align-items-center'>
+										<i className='text-xl far fa-list-alt mx-1'></i>
+										Financials
+									</span>
+								</Link>
+								<div className='btn btn-outline-danger w-100 disabled'>
+									<i className='text-xl far fa-file mx-1'></i>
+									Reports
+								</div>
 								<Link
 									to={'/charts/' + state.currentFinancial._id}
-									className='btn btn-primary w-100 btn-sm'
+									className='btn btn-success w-100 rounded-2xl'
 								>
-									<small className='text-lg fas fa-chart-pie mx-1'>
-										Charts
-									</small>
+									<i className='text-xl fas fa-chart-line mx-1'></i>
+									Charts
 								</Link>
 							</Animated>
+
 							<Animated animationIn='slideInLeft'>
-								<p className='text-right'>
-									<i className='far fa-calendar mx-1'></i>
+								<p className=' mb-0'>
+									<i className='far fa-calendar fa-fw mx-1'></i>
 									<b>{'Created At: '}</b>
 									{helpers.formatDate(state.currentFinancial.created)}
 								</p>
 							</Animated>
-							<Animated animationIn='slideInRight'>
-								<h1 className='text-center border-bottom mb-0'>
-									<u>{state.currentFinancial.title}</u>
-								</h1>
-							</Animated>
+							{state.currentFinancial.notes.map((n, i) => (
+								<div className='d-flex flex-row justify-content-start mb-0'>
+									<Animated
+										animationIn='slideInLeft'
+										animationInDelay={i * 250}
+									>
+										<p>
+											<i className='far fa-sticky-note fa-fw mx-1'></i>
+											<b>
+												{n.about}
+												{' : '}
+											</b>
+										</p>
+									</Animated>
+									<Animated
+										animationIn='slideInRight'
+										animationInDelay={i * 500}
+									>
+										<p className='mb-0'>{n.text}</p>
+									</Animated>
+								</div>
+							))}
+
 							<Animated animationIn='slideInLeft'>
-								<h4 className='text-center mb-0'>
+								<h5 className='text-xl text-dark text-center mb-0'>
+									{state.currentFinancial.title}
+								</h5>
+							</Animated>
+							<Animated animationIn='slideInRight'>
+								<p className='text-center mb-0'>
 									{' '}
 									{state.currentFinancial.company}
-								</h4>
-							</Animated>
-							{state.currentFinancial.notes.map((n) => (
-								<p className='text-center mb-0'>
-									<i className='far fa-sticky-note mx-1'></i>
-									<b>
-										{n.about}
-										{': '}
-									</b>
-									{n.text}
 								</p>
-							))}
+							</Animated>
 						</Col>
 					</Row>
 					<Row>
@@ -141,13 +170,6 @@ const Financial = (props) => {
 									</tbody>
 								</table>
 							</div>
-						</Col>
-					</Row>
-					<Row>
-						<Col size='md-2'>
-							<Link to='/'>
-								<h6 className='fas fa-home'>← Back to Home</h6>
-							</Link>
 						</Col>
 					</Row>
 				</Container>
