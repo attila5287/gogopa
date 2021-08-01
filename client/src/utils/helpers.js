@@ -32,7 +32,8 @@ module.exports = {
 							.reduce((a, c) => a + c))
 				)
 			} else {
-			}
+        
+      }
       return obj
     } )
 
