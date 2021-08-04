@@ -125,23 +125,12 @@ const Financial = (props) => {
 													<>
 														<tr>
 															<td className='px-4'>{a.name}</td>
-															<td className={helpers.styleAmount(c.sign)}>
-																{'$ '}
-																{helpers.formatAmount(
-																	c.sign,
-																	a.items
-																		?.flatMap((i) => i.values)
-																		?.flatMap((i) => i.amount).length
-																		? a.items
-																				?.flatMap((i) => i.values)
-																				?.flatMap((v) => v.amount)
-																				.reduce(
-																					(accumulator, currentValue) =>
-																						accumulator + currentValue
-																				)
-																		: 0
-																)}
-															</td>
+															{helpers.groupByAccount(c.sign, a).map((a) => (
+																<td className={helpers.styleAmount(c.sign)}>
+																	{'$ '}
+																	{a}
+																</td>
+															))}
 														</tr>
 														{a.items.map((i) => (
 															<tr className=''>
