@@ -88,28 +88,34 @@ const Charts = (props) => {
 				<Container fluid>
 					<Row>
 						<Col size='md-12'>
-							<Animated
-								animationIn='slideInLeft'
-								className='btn btn-group w-100 my-0'
-							>
-								<Link to='/' className='btn btn-outline-info w-100 rounded-2xl'>
-									<span className='d-flex flex-row align-items-center'>
-										<i className='text-xl far fa-list-alt mx-1'></i>
-										Financials
-									</span>
+							<nav className='nav nav-pills nav-fill navbar-dark bg-dark border-0 px-1 py-1 shadow-lg roundedmb-5'>
+								<Link
+									to='/home'
+									title='(create a new one or select from existing)'
+									data-toggle='tooltip'
+									className='nav-link rounded-2xl'
+								>
+									<i className='fas fa-file-invoice mx-1 fa-fw'></i>
+									Financials
 								</Link>
 								<Link
+									className='nav-link'
+									data-toggle='tooltip'
+									title='(generates a
+									statement-style financial)'
 									to={'/financials/' + state.currentFinancial._id}
-									className='btn btn-outline-warning w-100'
 								>
-									<i className='text-xl far fa-file mx-1'></i>
+									<i className='fas fa-file-invoice-dollar mx-1 fa-fw'></i>
 									Reports
 								</Link>
-								<div className='btn btn-outline-dark border-0 w-100 rounded-2xl disabled'>
-									<i className='text-xl fas fa-chart-line mx-1'></i>
+								<Link
+									to={'/charts/' + state.currentFinancial._id}
+									className='nav-link active'
+								>
+									<i className='fas fa-chart-line mx-1'></i>
 									Charts
-								</div>
-							</Animated>
+								</Link>
+							</nav>
 
 							<div className='row'>
 								<Animated animationIn='slideInLeft' className='col'>

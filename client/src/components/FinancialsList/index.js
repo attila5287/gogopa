@@ -27,16 +27,22 @@ function FinancialsList() {
 
 	return (
 		<div>
-			<h1>Financials</h1>
-			<h3 className='mb-5 mt-5'>Click on a financial to view</h3>
+      <h1>
+        <i className="fas fa-file-invoice"></i>
+        Financials</h1>
+      <hr />
+			<h3 className='mb-0 mt-5'>Click on a financial to view</h3>
 			{state.financials.length ? (
-				<List>
+				<List className="list-group">
 					{state.financials.map((financial) => (
 						<ListItem key={financial._id}>
 							<Link to={'/financials/' + financial._id}>
 								<strong>
-									{financial.title} ({financial.company})
+                  { financial.title }
 								</strong>
+                <i>
+                  ({ financial.company })
+                  </i>
 							</Link>
 						</ListItem>
 					))}

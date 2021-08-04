@@ -3,7 +3,7 @@ import { Animated } from 'react-animated-css';
 
 export default function AppLogo() {
   return (
-		<span className='mx-1 text-md'>
+		<span className=''>
 			<Animated
 				animationIn='slideInLeft'
 				isVisible={true}

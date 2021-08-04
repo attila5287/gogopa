@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom';
 import { Animated } from 'react-animated-css';
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Col, Row, Container } from '../components/Grid';
 import Outline from '../components/Outline';
 import helpers from '../utils/helpers';
@@ -25,31 +25,37 @@ const Financial = (props) => {
 				<Container fluid>
 					<Row>
 						<Col size='xs-8 xs-offset-2'>
-							<Animated
-								animationIn='slideInRight'
-								className='btn btn-group w-100 my-0'
-							>
-								<Link to='/' className='btn btn-outline-info w-100 rounded-2xl'>
-									<span className='d-flex flex-row align-items-center'>
-										<i className='text-xl far fa-list-alt mx-1'></i>
-										Financials
-									</span>
+							<nav className='nav nav-pills nav-fill navbar-dark bg-dark border-0 px-1 py-1 shadow-lg rounded mb-2'>
+								<Link
+									to='/home'
+									title='(create a new one or select from existing)'
+									data-toggle='tooltip'
+									className='nav-link rounded-2xl'
+								>
+									<i className='fas fa-file-invoice mx-1 fa-fw'></i>
+									Financials
 								</Link>
-								<div className='btn btn-outline-dark border-0  w-100 disabled'>
-									<i className='text-xl far fa-file mx-1'></i>
+								<Link
+									className='nav-link active'
+									data-toggle='tooltip'
+									title='(generates a
+									statement-style financial)'
+									to={'/financials/' + state.currentFinancial._id}
+								>
+									<i className='fas fa-file-invoice-dollar mx-1 fa-fw'></i>
 									Reports
-								</div>
+								</Link>
 								<Link
 									to={'/charts/' + state.currentFinancial._id}
-									className='btn btn-outline-success w-100 rounded-2xl'
+									className='nav-link'
 								>
-									<i className='text-xl fas fa-chart-line mx-1'></i>
+									<i className='fas fa-chart-line mx-1'></i>
 									Charts
 								</Link>
-							</Animated>
+							</nav>
 
 							<Animated animationIn='slideInLeft'>
-								<div className=' mb-0'>
+								<div className='text-sm  mb-0'>
 									<i className='far fa-calendar fa-fw mx-1'></i>
 									<b>{'Created At: '}</b>
 									{helpers.formatDate(state.currentFinancial.created)}
@@ -68,33 +74,31 @@ const Financial = (props) => {
 									))}
 								</div>
 							</Animated>
-							<hr/>
-							<Animated animationInDelay={2000} animationIn='zoomIn'>
-								<h5 className='text-dark text-center mb-0 border-bottom border-dark mx-5'>
+							<Animated animationInDelay={0} animationIn='zoomIn'>
+								<h5 className='text-dark text-center mb-0 mx-5'>
 									<b>{state.currentFinancial.title}</b>
 								</h5>
+								<hr className='bg-primary my-0 mx-5 pt-0 pb-1 rounded-lg' />
 								<p className='text-sm text-center mb-1'>
-                  <b>
-									{state.currentFinancial.company}
-                  </b>
+									{state.currentFinancial.company}{' '}
 								</p>
 							</Animated>
 						</Col>
 					</Row>
 					<Row>
-						<Col size='md-10 md-offset-1' className="text-center">
+						<Col size='md-10 md-offset-1' className='text-center'>
 							<div className='table-responsive rounded-xl'>
-								<table className='table table-sm table-light table-hover table-striped table-borderless text-sm'>
+								<table className='table table-sm table-light table-hover table-striped text-sm'>
 									<thead>
 										<tr>
 											<th
 												scope='column'
-												className='py-0 text-center text-primary'
+												className='text-center text-primary'
 											></th>
 
 											{state.currentFinancial?.categories[0]?.accounts[0]?.items[0]?.values?.map(
 												(v) => (
-													<th scope='column' className='py-0 text-center'>
+													<th scope='column' className='text-center'>
 														{v.dated}
 													</th>
 												)

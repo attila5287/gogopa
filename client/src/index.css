@@ -142,6 +142,9 @@ a.nav-a:focus {
 .border-lite {
   border-width: 0.15rem;
 }
+.border-thn {
+  border-width: 0.15rem;
+}
 .border-med {
   border-width: 0.25rem;
 }
@@ -217,10 +220,10 @@ transform: rotate(90deg);
 }
 
 .nav-link > .far {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 .nav-link > .fas {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 .fa-stack {
   font-size: 3.0rem;
@@ -330,4 +333,18 @@ tbody td:last-child {
 }
 .text-purple {
 color: mediumpurple;
+}
+
+.nav .nav-link {
+  padding: 0rem 0.5rem 0rem 0.5rem;
+  border-radius: 0rem 0rem 0rem 0rem; 
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
+  border-right: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.navbar .nav-link {
+  padding: 0rem 0.2rem 0.2rem 0rem;
+  border-radius: 0rem 0rem 0rem 0rem; 
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+  border-right: 2px solid rgba(0, 0, 0, 0.2);
 }
