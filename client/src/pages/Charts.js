@@ -153,7 +153,6 @@ const Charts = (props) => {
 							</div>
 						</Col>
 					</Row>
-
 					{state.currentFinancial.categories.map((c, i) => (
 						<>
 							<Bar
@@ -168,7 +167,8 @@ const Charts = (props) => {
 										{
 											type: 'line',
 											label:
-												state.currentFinancial?.title + ' '+
+												state.currentFinancial?.title +
+												' ' +
 												helpers.datesArray(c).join(' ') +
 												' Totals',
 											backgroundColor: 'rgba(54, 162, 235, 0.8)',
@@ -185,39 +185,41 @@ const Charts = (props) => {
 						</>
 					))}
 					<div className='row'>
-						{state.currentFinancial.categories.map((c, i) => (
-							<div className='col-6'>
-								<Doughnut
-									data={{
-										labels: helpers.datesArray(c),
-										datasets: [
-											{
-												data: helpers.groupByCategory(c),
-												backgroundColor: helpers
-													.datesArray(c)
-													.map((d, i) => helpers.genColors(i)),
-												borderColor: ['rgba(217,227,241,1)'],
-												borderWidth: 0
+						{state.currentFinancial.categories.reverse().map((c, i) =>
+							helpers.datesArray(c).map((d) => (
+								<div className='col-8 offset-2'>
+									<Doughnut
+										data={{
+											labels: c?.accounts?.flatMap((a) => a.name),
+											datasets: [
+												{
+													data: helpers.breakdownCategory(c, d),
+													backgroundColor: Array.from(
+														{ length: helpers.breakdownCategory(c, d).length },
+														(v, i) => helpers.genColors(i)
+													),
+													borderWidth: 1
+												}
+											]
+										}}
+										options={{
+											plugins: {
+												title: {
+													position: 'top',
+													align: 'center',
+													display: true,
+													text: c?.name + ' ' + d
+												},
+												legend: {
+													position: 'right',
+													display: true
+												}
 											}
-										]
-									}}
-									options={{
-										plugins: {
-											title: {
-												position: 'top',
-												align: 'center',
-												display: true,
-												text: c?.name
-											},
-											legend: {
-												position: 'bottom',
-												display: true
-											}
-										}
-									}}
-								/>
-							</div>
-						))}
+										}}
+									/>
+								</div>
+							))
+						)}
 					</div>
 
 					<Row>

@@ -1,55 +1,75 @@
 module.exports = {
-  finalSum: ( cats ) => {
-  const groupByCategory= (c) => {
-		const datesArr = c?.accounts
-			?.flatMap((a) => a.items)
-			?.flatMap((i) => i.values)
-			?.flatMap((i) => i.dated);
-
-		const datesSet = new Set(datesArr);
-		const dates = Array.from(datesSet);
-
-		const obj = {};
-		const accts = dates.map((d) => {
-			const items = c.accounts.flatMap((a) => a.items);
-			const sums = (obj[d] = items
-				.flatMap((a) => a.values)
-				.filter((v) => v.dated == d)
-				.flatMap((v) => v.amount)
-				.reduce((a, c) => a + c));
-
-			if (items.length) {
-				obj[d] =  sums
+  breakdownCategory: ( c, d ) => {
+    const accountNames = c?.accounts
+      ?.flatMap( ( a ) => a.name );
+    console.log(`accountNames`, accountNames)
+const obj = {};
+    const accts = c.accounts.map((acct) => {
+			if (acct.items.length) {
+				obj[acct.name] = acct.items
+					?.flatMap((a) => a.values)
+					.filter((v) => v.dated == d)
+					.flatMap((v) => v.amount)
+					.reduce((a, c) => a + c);
 			} else {
 			}
 			return obj;
-		});
-		return dates.map((d) => {return{date: d.toString(), sign: c.sign,total:obj[d]}});
-  };
+    } );
+    console.log(`obj`, obj)
+    
+    return accountNames.map((d,i)=>obj[d]);
+  },
+  finalSum: ( cats ) => {
+    const groupByCategory= (c) => {
+      const datesArr = c?.accounts
+        ?.flatMap((a) => a.items)
+        ?.flatMap((i) => i.values)
+        ?.flatMap((i) => i.dated);
+
+      const datesSet = new Set(datesArr);
+      const dates = Array.from(datesSet);
+
+      const obj = {};
+      const accts = dates.map((d) => {
+        const items = c.accounts.flatMap((a) => a.items);
+        const sums = (obj[d] = items
+          .flatMap((a) => a.values)
+          .filter((v) => v.dated == d)
+          .flatMap((v) => v.amount)
+          .reduce((a, c) => a + c));
+
+        if (items.length) {
+          obj[d] =  sums
+        } else {
+        }
+        return obj;
+      });
+      return dates.map((d) => {return{date: d.toString(), sign: c.sign,total:obj[d]}});
+    };
     const datesArray = ( c ) => {
   
-      const datesArr = c?.accounts
-        ?.flatMap( ( a ) => a.items )
-        ?.flatMap( ( i ) => i.values )
-        ?.flatMap( ( i ) => i.dated )
+    const datesArr = c?.accounts
+      ?.flatMap( ( a ) => a.items )
+      ?.flatMap( ( i ) => i.values )
+      ?.flatMap( ( i ) => i.dated )
 
-      const datesSet = new Set( datesArr )
-      const dates = Array.from( datesSet )
-      return dates
+    const datesSet = new Set( datesArr )
+    const dates = Array.from( datesSet )
+    return dates
     };
 
     const flat = cats
       .flatMap( ( c ) => groupByCategory( c ) );
     const dates = datesArray(cats[0]);
-    console.log(`dates`, dates)
+    // console.log(`dates`, dates)
     const signsSet = new Set( flat.map( ( r ) => r.sign ) );
     const signs = Array.from( signsSet );
-    console.log(`signs`, signs)
+    // console.log(`signs`, signs)
     const res = []
     dates.forEach( d => {
       let sum = 0;
       const filtered = flat.filter( r => r.date == d );
-      console.log(`filtered`, filtered)
+      // console.log(`filtered`, filtered)
       filtered.forEach( f => {
         if (f.sign == 'plus') {
 					sum = sum + f.total;
@@ -61,7 +81,7 @@ module.exports = {
       res.push( sum );
       
     } )
-    console.log(`res`, res)
+    // console.log(`res`, res)'
     return res;
   },
   genColors: ( i ) => [
@@ -73,7 +93,16 @@ module.exports = {
       'rgba(253,180,98, 0.5)' ,
       'rgba(179,222,105, 0.5)' ,
       'rgba(252,205,229, 0.5)' ,
-      'rgba(217, 217, 217, 0.5)' ,
+    'rgba(217, 217, 217, 0.5)',
+      'rgba(166,206,227, 0.5)' ,
+      'rgba(31,120,180, 0.5)' ,
+      'rgba(178,223,138, 0.5)' ,
+      'rgba(51,160,44, 0.5)' ,
+      'rgba(251,154,153, 0.5)' ,
+      'rgba(227,26,28, 0.5)' ,
+      'rgba(253,191,111, 0.5)' ,
+      'rgba(255,127,0, 0.5)' ,
+      'rgba(202,178,21, 0.5)' ,
   ][ i ],
   datesArray: ( c ) => {
     
