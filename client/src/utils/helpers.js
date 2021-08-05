@@ -1,52 +1,7 @@
 module.exports = {
-	groupByAccount: (signCat, acct) => {
-		const formatAmount = (sign, amount) => {
-			// format large numbers with commas
-			if (sign == 'minus') {
-				return '(' + parseInt(amount).toLocaleString() + ')';
-			} else {
-				return parseInt(amount).toLocaleString();
-			}
-		};
-
-		const datesArr = acct.items
-			?.flatMap((i) => i.values)
-			?.flatMap((i) => i.dated);
-
-		const datesSet = new Set(datesArr);
-		const dates = Array.from(datesSet);
-
-		const obj = {};
-		const accts = dates.map((d) => {
-			if (acct.items.length) {
-				obj[d] = formatAmount(
-					signCat,
-					acct.items
-						?.flatMap((a) => a.values)
-						.filter((v) => v.dated == d)
-						.flatMap((v) => v.amount)
-						.reduce((a, c) => a + c)
-				);
-			} else {
-			}
-			return obj;
-		});
-
-		console.log(`accts`, accts);
-
-		return dates.map((d) => obj[d]);
-	},
-	groupByCategory: (c) => {
-		const formatAmount = (sign, amount) => {
-			// format large numbers with commas
-			if (sign == 'minus') {
-				return '$ (' + parseInt(amount).toLocaleString() + ')';
-			} else {
-				return '$' + parseInt(amount).toLocaleString();
-			}
-		};
-
-		const datesArr = c.accounts
+  finalSum: ( cats ) => {
+  const groupByCategory= (c) => {
+		const datesArr = c?.accounts
 			?.flatMap((a) => a.items)
 			?.flatMap((i) => i.values)
 			?.flatMap((i) => i.dated);
@@ -64,7 +19,120 @@ module.exports = {
 				.reduce((a, c) => a + c));
 
 			if (items.length) {
-				obj[d] = formatAmount(c.sign, sums);
+				obj[d] =  sums
+			} else {
+			}
+			return obj;
+		});
+		return dates.map((d) => {return{date: d.toString(), sign: c.sign,total:obj[d]}});
+  };
+    const datesArray = ( c ) => {
+  
+      const datesArr = c?.accounts
+        ?.flatMap( ( a ) => a.items )
+        ?.flatMap( ( i ) => i.values )
+        ?.flatMap( ( i ) => i.dated )
+
+      const datesSet = new Set( datesArr )
+      const dates = Array.from( datesSet )
+      return dates
+    };
+
+    const flat = cats
+      .flatMap( ( c ) => groupByCategory( c ) );
+    const dates = datesArray(cats[0]);
+    console.log(`dates`, dates)
+    const signsSet = new Set( flat.map( ( r ) => r.sign ) );
+    const signs = Array.from( signsSet );
+    console.log(`signs`, signs)
+    const res = []
+    dates.forEach( d => {
+      let sum = 0;
+      const filtered = flat.filter( r => r.date == d );
+      console.log(`filtered`, filtered)
+      filtered.forEach( f => {
+        if (f.sign == 'plus') {
+					sum = sum + f.total;
+        }
+        if ( f.sign == 'minus' ) {
+					sum = sum - f.total;
+				}
+      })
+      res.push( sum );
+      
+    } )
+    console.log(`res`, res)
+    return res;
+  },
+  genColors: ( i ) => [
+      'rgba(141,211,199, 0.5)' ,
+      'rgba(251,128,114, 0.5)' ,
+      'rgba(190,186,218, 0.5)' ,
+      'rgba(255,255,179, 0.5)' ,
+      'rgba(128,177,211, 0.5)' ,
+      'rgba(253,180,98, 0.5)' ,
+      'rgba(179,222,105, 0.5)' ,
+      'rgba(252,205,229, 0.5)' ,
+      'rgba(217, 217, 217, 0.5)' ,
+  ][ i ],
+  datesArray: ( c ) => {
+    
+		const datesArr = c?.accounts
+			?.flatMap((a) => a.items)
+			?.flatMap((i) => i.values)
+			?.flatMap((i) => i.dated);
+
+		const datesSet = new Set(datesArr);
+		const dates = Array.from(datesSet);
+    return dates;
+  },
+	groupByAccount: (acct) => {
+		const datesArr = acct.items
+			?.flatMap((i) => i.values)
+			?.flatMap((i) => i.dated);
+
+		const datesSet = new Set(datesArr);
+		const dates = Array.from(datesSet);
+
+		const obj = {};
+		const accts = dates.map((d) => {
+			if (acct.items.length) {
+				obj[d] = 
+					acct.items
+						?.flatMap((a) => a.values)
+						.filter((v) => v.dated == d)
+						.flatMap((v) => v.amount)
+						.reduce((a, c) => a + c)
+				;
+			} else {
+			}
+			return obj;
+		});
+
+		console.log(`accts`, accts);
+
+		return dates.map((d) => obj[d]);
+	},
+	groupByCategory: (c) => {
+		const datesArr = c?.accounts
+			?.flatMap((a) => a.items)
+			?.flatMap((i) => i.values)
+			?.flatMap((i) => i.dated);
+
+		const datesSet = new Set(datesArr);
+		const dates = Array.from(datesSet);
+
+		const obj = {};
+		const accts = dates.map((d) => {
+			const items = c.accounts.flatMap((a) => a.items);
+			const sums = (obj[d] = items
+				.flatMap((a) => a.values)
+				.filter((v) => v.dated == d)
+				.flatMap((v) => v.amount)
+				.reduce((a, c) => a + c));
+
+			if (items.length) {
+				obj[d] =  sums
 			} else {
 			}
 			return obj;
@@ -87,9 +155,9 @@ module.exports = {
 	formatAmount: (sign, amount) => {
 		// format large numbers with commas
 		if (sign == 'minus') {
-			return '(' + parseInt(amount).toLocaleString() + ')';
+			return '$ (' + parseInt(amount).toLocaleString() + ')';
 		} else {
-			return parseInt(amount).toLocaleString();
+			return '$ '+parseInt(amount).toLocaleString();
 		}
 	},
 	formatDate: (date) => {

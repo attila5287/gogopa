@@ -10,10 +10,11 @@ import { useStoreContext } from '../utils/GlobalState';
 import { SET_CURRENT_FINANCIAL } from '../utils/actions';
 import { Doughnut, Bar } from '@iftek/react-chartjs-3';
 
+
 const rand = () => Math.floor(Math.random() * 3) + 1;
 
 
-const myData = [
+const myData =()=> [
 	{
 		type: 'line',
 		label: 'Profit/Loss',
@@ -49,7 +50,7 @@ const genData = () => ({
 	// number (pixels) or 'flex'
 	barThickness: '11',
 
-	datasets: [myData[0], myData[rand()]]
+	datasets: [myData()[0], myData()[rand()]]
 });
 
 const options = {
@@ -63,7 +64,6 @@ const options = {
 		]
 	}
 };
-
 const Charts = (props) => {
 	const [state, dispatch] = useStoreContext();
 
@@ -76,11 +76,11 @@ const Charts = (props) => {
 	}, []);
 	const [data, setData] = useState(genData());
 
-	useEffect(() => {
-		const interval = setInterval(() => setData(genData()), 1000);
+	// useEffect(() => {
+	// 	const interval = setInterval(() => setData(genData()), 1000);
 
-		return () => clearInterval(interval);
-  }, [] );
+	// 	return () => clearInterval(interval);
+  // }, [] );
   
 	return (
 		<div className='mini'>
@@ -154,85 +154,71 @@ const Charts = (props) => {
 						</Col>
 					</Row>
 
-					<Row>
-						<Col size='md-12'>
-							<Bar data={data} options={options} />
-							<div className='row'>
-								<div className='col-6'>
-									<Doughnut
-										data={{
-											title: data.datasets[1].label,
-											labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-
-											datasets: [
-												{
-													data: data.datasets[1].data,
-													backgroundColor: [
-														'rgba(225, 122, 192, 0.50)',
-														'rgba(54, 162, 235, 0.50)',
-														'rgba(91,98,244,0.5)',
-														'rgba(155, 206, 186, 0.50)'
-													],
-													borderColor: ['rgba(217,227,241,1)'],
-													borderWidth: 0
-												}
-											]
-										}}
-										options={{
-											plugins: {
-												title: {
-													position: 'top',
-													align: 'center',
-													display: true,
-													text: data.datasets[1].label
-												},
-												legend: {
-													position: 'bottom',
-													display: true
-												}
+					{state.currentFinancial.categories.map((c, i) => (
+						<>
+							<Bar
+								data={{
+									labels: helpers.datesArray(c),
+									datasets: [
+										{
+											label: c.name,
+											data: helpers.groupByCategory(c),
+											backgroundColor: helpers.genColors(i)
+										},
+										{
+											type: 'line',
+											label:
+												state.currentFinancial?.title + ' '+
+												helpers.datesArray(c).join(' ') +
+												' Totals',
+											backgroundColor: 'rgba(54, 162, 235, 0.8)',
+											borderColor: 'rgba(54, 162, 235, 0.7)',
+											pointRadius: 8,
+											data: helpers.finalSum(state.currentFinancial?.categories)
+										}
+									]
+								}}
+								options={{
+									plugins: {}
+								}}
+							/>
+						</>
+					))}
+					<div className='row'>
+						{state.currentFinancial.categories.map((c, i) => (
+							<div className='col-6'>
+								<Doughnut
+									data={{
+										labels: helpers.datesArray(c),
+										datasets: [
+											{
+												data: helpers.groupByCategory(c),
+												backgroundColor: helpers
+													.datesArray(c)
+													.map((d, i) => helpers.genColors(i)),
+												borderColor: ['rgba(217,227,241,1)'],
+												borderWidth: 0
 											}
-										}}
-									/>
-								</div>
-								<div className='col-6'>
-									<Doughnut
-										data={{
-											title: data.datasets[0].label,
-											labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-
-											datasets: [
-												{
-													data: data.datasets[0].data,
-													backgroundColor: [
-														'rgba(225, 122, 192, 0.50)',
-														'rgba(54, 162, 235, 0.50)',
-														'rgba(91,98,244,0.5)',
-														'rgba(155, 206, 186, 0.50)'
-													],
-													borderColor: ['rgba(217,227,241,1)'],
-													borderWidth: 0
-												}
-											]
-										}}
-										options={{
-											plugins: {
-												title: {
-													position: 'top',
-													align: 'center',
-													display: true,
-													text: data.datasets[0].label
-												},
-												legend: {
-													position: 'bottom',
-													display: true
-												}
+										]
+									}}
+									options={{
+										plugins: {
+											title: {
+												position: 'top',
+												align: 'center',
+												display: true,
+												text: c?.name
+											},
+											legend: {
+												position: 'bottom',
+												display: true
 											}
-										}}
-									/>
-								</div>
+										}
+									}}
+								/>
 							</div>
-						</Col>
-					</Row>
+						))}
+					</div>
 
 					<Row>
 						<Col size='md-2'>

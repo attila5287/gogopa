@@ -97,8 +97,12 @@ const Financial = (props) => {
 											></th>
 
 											{state.currentFinancial?.categories[0]?.accounts[0]?.items[0]?.values?.map(
-												(v) => (
-													<th scope='column' className='text-center'>
+												(v, i) => (
+													<th
+														key={'th' + i}
+														scope='column'
+														className='text-center'
+													>
 														{v.dated}
 													</th>
 												)
@@ -106,9 +110,9 @@ const Financial = (props) => {
 										</tr>
 									</thead>
 									<tbody>
-										{state.currentFinancial.categories.map((c) => (
+										{state.currentFinancial.categories.map((c, i) => (
 											<>
-												<tr className=''>
+												<tr key={'trc' + i} className=''>
 													<td>{c.name}</td>
 
 													{c?.accounts
@@ -116,28 +120,26 @@ const Financial = (props) => {
 																.groupByCategory(c)
 																.map((t) => (
 																	<td className={helpers.styleAmount(c.sign)}>
-																		{t}
+																		{helpers.formatAmount(c.sign,t)}
 																	</td>
 																))
 														: 0}
 												</tr>
-												{c.accounts.map((a) => (
+												{c.accounts.map((a, ia) => (
 													<>
-														<tr>
+														<tr key={'trc' + i + 'tra' + ia}>
 															<td className='px-4'>{a.name}</td>
-															{helpers.groupByAccount(c.sign, a).map((a) => (
+															{helpers.groupByAccount(a).map((a) => (
 																<td className={helpers.styleAmount(c.sign)}>
-																	{'$ '}
-																	{a}
+																	{helpers.formatAmount(c.sign,a)}
 																</td>
 															))}
 														</tr>
-														{a.items.map((i) => (
-															<tr className=''>
+														{a.items.map((i, ii) => (
+															<tr className='' key={'trc' + i+'tra'+ia+'tri'+ii}>
 																<td className='px-5 align-middle'>{i.name}</td>
 																{i.values.map((v) => (
 																	<td className='align-middle'>
-																		{'$ '}
 																		{helpers.formatAmount(c.sign, v.amount)}
 																	</td>
 																))}
