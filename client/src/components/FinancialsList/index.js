@@ -27,27 +27,26 @@ function FinancialsList() {
 
 	return (
 		<div>
-      <h1>
-        <i className="fas fa-file-invoice"></i>
-        Financials</h1>
-      <hr />
-			<h3 className='mb-0 mt-5'>Click on a financial to view</h3>
+			<h1>
+				<i className='fas fa-file-invoice mx-2'></i>
+				Financials
+			</h1>
+			<h3 className='mb-0 mt-5'>
+				<i className='fas fa-list-ul mx-2'></i>
+        Click on a financial to view
+			</h3>
+			<hr />
 			{state.financials.length ? (
-				<List className="list-group">
+				<List className='list-group'>
 					{state.financials.map((financial) => (
 						<ListItem key={financial._id}>
 							<Link to={'/financials/' + financial._id}>
-								<strong>
-                  { financial.title }
-								</strong>
-                <i>
-                  ({ financial.company })
-                  </i>
+								<strong>{financial.title}</strong>
+								<i>({financial.company})</i>
 							</Link>
 						</ListItem>
 					))}
-        </List>
-        
+				</List>
 			) : (
 				<h3>You haven't added any financials yet!</h3>
 			)}

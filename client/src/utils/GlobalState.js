@@ -5,6 +5,7 @@ import {
   REMOVE_POST,
   UPDATE_FINANCIALS,
   UPDATE_POSTS,
+  ADD_FINANCIAL,
   ADD_POST,
   ADD_FAVORITE,
   UPDATE_FAVORITES,
@@ -47,6 +48,12 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				posts: [action.post, ...state.posts],
+				loading: false
+			};
+		case ADD_FINANCIAL:
+			return {
+				...state,
+				financials: [action.financial, ...state.financials],
 				loading: false
 			};
 

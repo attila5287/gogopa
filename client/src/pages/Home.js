@@ -2,9 +2,7 @@ import { Animated } from 'react-animated-css';
 import { Link } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { Col, Row, Container } from '../components/Grid';
-import Table from '../components/Table';
-import Dynamic from '../components/Dynamic';
-import PostsList from '../components/PostsList';
+import CreateFinancial from '../components/CreateFinancial';
 import FinancialsList from '../components/FinancialsList';
 import { useStoreContext } from '../utils/GlobalState';
 import { SET_CURRENT_FINANCIAL } from '../utils/actions';
@@ -48,7 +46,9 @@ const Home = () => {
 						</nav>
 					</Col>
 				</Row>
-				<FinancialsList />
+        <FinancialsList />
+        <CreateFinancial />
+        
 			</div>
 		</Container>
 	);

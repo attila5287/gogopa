@@ -184,10 +184,10 @@ const Charts = (props) => {
 							/>
 						</>
 					))}
-					<div className='row'>
+					<div className='row no-gutters'>
 						{state.currentFinancial.categories.reverse().map((c, i) =>
 							helpers.datesArray(c).map((d) => (
-								<div className='col-8 offset-2'>
+								<div className='col-6 p-0'>
 									<Doughnut
 										data={{
 											labels: c?.accounts?.flatMap((a) => a.name),
@@ -208,10 +208,14 @@ const Charts = (props) => {
 													position: 'top',
 													align: 'center',
 													display: true,
-													text: c?.name + ' ' + d
+                          text: c?.name + ' ' + d,
+                          padding: {
+                            top:0,
+                            bottom:0,
+                          },
 												},
 												legend: {
-													position: 'right',
+													position: 'left',
 													display: true
 												}
 											}
