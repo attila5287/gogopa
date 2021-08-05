@@ -10,7 +10,7 @@ const obj = {};
 					?.flatMap((a) => a.values)
 					.filter((v) => v.dated == d)
 					.flatMap((v) => v.amount)
-					.reduce((a, c) => a + c);
+					.reduce((a, c) => a + c,0);
 			} else {
 			}
 			return obj;
