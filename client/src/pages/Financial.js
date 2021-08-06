@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Animated } from 'react-animated-css';
 import React, { useEffect } from 'react';
 import { Col, Row, Container } from '../components/Grid';
+import NavPills from '../components/NavPills';
 import Outline from '../components/Outline';
 import helpers from '../utils/helpers';
 import API from '../utils/API';
@@ -25,35 +26,7 @@ const Financial = (props) => {
 				<Container fluid>
 					<Row>
 						<Col size='xs-8 xs-offset-2'>
-							<nav className='nav nav-pills nav-fill navbar-dark bg-dark border-0 px-1 py-1 shadow-lg rounded mb-2'>
-								<Link
-									to='/home'
-									title='(create a new one or select from existing)'
-									data-toggle='tooltip'
-									className='nav-link rounded-2xl'
-								>
-									<i className='fas fa-file-invoice mx-1 fa-fw'></i>
-									Financials
-								</Link>
-								<Link
-									className='nav-link active'
-									data-toggle='tooltip'
-									title='(generates a
-									statement-style financial)'
-									to={'/financials/' + state.currentFinancial._id}
-								>
-									<i className='fas fa-file-invoice-dollar mx-1 fa-fw'></i>
-									Reports
-								</Link>
-								<Link
-									to={'/charts/' + state.currentFinancial._id}
-									className='nav-link'
-								>
-									<i className='fas fa-chart-line mx-1'></i>
-									Charts
-								</Link>
-							</nav>
-
+              <NavPills/>
 							<Animated animationIn='slideInLeft'>
 								<div className='text-sm  mb-0'>
 									<i className='far fa-calendar fa-fw mx-1'></i>

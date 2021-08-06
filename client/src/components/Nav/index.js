@@ -8,7 +8,7 @@ import { Animated } from 'react-animated-css';
 
   return (
 		<>
-			<nav className='navbar navbar-expand navbar-dark bg-dark'>
+			<nav className='navbar navbar-expand navbar-dark bg-darko'>
 				<a
 					className='navbar-brand py-0 px-1 w-100 ml-auto'
 					href='https://gogopa.herokuapp.com/'
@@ -60,9 +60,7 @@ import { Animated } from 'react-animated-css';
 					<span className='text-md align-top'>About</span>
 				</a>
 			</nav>
-			<Animated animationIn='infinite heartBeat'>
-				<hr className='pt-0 mt-0 pb-1 mb-2 mx-5 bg-primary rounded-2xl' />
-			</Animated>
+			<nav className='navbar navbar-expand navbar-dark bg-primary pt-0 pb-2 mt-0'></nav>
 		</>
 	);
 }

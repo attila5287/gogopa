@@ -27,11 +27,7 @@ function FinancialsList() {
 
 	return (
 		<div>
-			<h1>
-				<i className='fas fa-file-invoice mx-2'></i>
-				Financials
-			</h1>
-			<h3 className='mb-0 mt-5'>
+			<h3 className='mb-0 mt-2'>
 				<i className='fas fa-list-ul mx-2'></i>
         Click on a financial to view
 			</h3>
