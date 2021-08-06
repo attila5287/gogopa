@@ -1,3 +1,4 @@
+import BackToHome from '../components/BackToHome';
 import { Link } from 'react-router-dom';
 import { Animated } from 'react-animated-css';
 import React, { useEffect } from 'react';
@@ -22,11 +23,12 @@ const Financial = (props) => {
 
 	return (
 		<div className='mini'>
+			<BackToHome />
 			{state.currentFinancial ? (
 				<Container fluid>
 					<Row>
 						<Col size='xs-8 xs-offset-2'>
-              <NavPills/>
+							<NavPills />
 							<Animated animationIn='slideInLeft'>
 								<div className='text-sm  mb-0'>
 									<i className='far fa-calendar fa-fw mx-1'></i>
@@ -61,7 +63,7 @@ const Financial = (props) => {
 					<Row>
 						<Col size='md-10 md-offset-1' className='text-center'>
 							<div className='table-responsive rounded-xl'>
-								<table className='table table-sm table-light table-hover table-striped text-sm'>
+								<table className='table table-sm table-primary table-hover table-striped text-sm'>
 									<thead>
 										<tr>
 											<th
@@ -93,7 +95,7 @@ const Financial = (props) => {
 																.groupByCategory(c)
 																.map((t) => (
 																	<td className={helpers.styleAmount(c.sign)}>
-																		{helpers.formatAmount(c.sign,t)}
+																		{helpers.formatAmount(c.sign, t)}
 																	</td>
 																))
 														: 0}
@@ -104,12 +106,15 @@ const Financial = (props) => {
 															<td className='px-4'>{a.name}</td>
 															{helpers.groupByAccount(a).map((a) => (
 																<td className={helpers.styleAmount(c.sign)}>
-																	{helpers.formatAmount(c.sign,a)}
+																	{helpers.formatAmount(c.sign, a)}
 																</td>
 															))}
 														</tr>
 														{a.items.map((i, ii) => (
-															<tr className='' key={'trc' + i+'tra'+ia+'tri'+ii}>
+															<tr
+																className=''
+																key={'trc' + i + 'tra' + ia + 'tri' + ii}
+															>
 																<td className='px-5 align-middle'>{i.name}</td>
 																{i.values.map((v) => (
 																	<td className='align-middle'>

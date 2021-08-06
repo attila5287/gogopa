@@ -8,7 +8,7 @@ import { Animated } from 'react-animated-css';
 
   return (
 		<>
-			<nav className='navbar navbar-expand navbar-dark bg-darko'>
+			<nav className='navbar navbar-expand navbar-dark bg-darko pb-0'>
 				<a
 					className='navbar-brand py-0 px-1 w-100 ml-auto'
 					href='https://gogopa.herokuapp.com/'
@@ -57,9 +57,14 @@ import { Animated } from 'react-animated-css';
 					data-toggle='tooltip'
 					title='Report an issue, await response'
 				>
-					<span className='text-md align-top'>About</span>
+					<span className='text-md align-top'>
+						<u>
+							<small>About</small>
+						</u>
+					</span>
 				</a>
 			</nav>
+
 			<nav className='navbar navbar-expand navbar-dark bg-primary pt-0 pb-2 mt-0'></nav>
 		</>
 	);

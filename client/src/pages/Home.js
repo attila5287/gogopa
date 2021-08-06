@@ -7,7 +7,6 @@ import FinancialsList from '../components/FinancialsList';
 import { useStoreContext } from '../utils/GlobalState';
 import { SET_CURRENT_FINANCIAL } from '../utils/actions';
 import helpers from '../utils/helpers';
-import NavPills from '../components/NavPills';
 
 
 const Home = () => {
@@ -19,7 +18,6 @@ const Home = () => {
 			<div className='mini'>
 				<Row>
 					<Col size='sm-12'>
-          <NavPills/>
 					</Col>
 				</Row>
         <FinancialsList />
