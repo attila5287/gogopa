@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Animated } from 'react-animated-css';
 import React, { useEffect } from 'react';
 import { Col, Row, Container } from '../components/Grid';
-import NavPills from '../components/NavPills';
 import Outline from '../components/Outline';
 import helpers from '../utils/helpers';
 import API from '../utils/API';
@@ -28,7 +27,6 @@ const Financial = (props) => {
 				<Container fluid>
 					<Row>
 						<Col size='xs-8 xs-offset-2'>
-							<NavPills />
 							<Animated animationIn='slideInLeft'>
 								<div className='text-sm  mb-0'>
 									<i className='far fa-calendar fa-fw mx-1'></i>
