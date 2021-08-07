@@ -9,11 +9,14 @@ export default function NavPills(props) {
 
   return (
 		<>
-			<nav className='nav nav-tabs nav-fill my-1 mx-4 shadow-none'>
+			<nav className='nav nav-tabs nav-fill my-1 mx-4 shadow-none '>
 				{['Data', 'Report', 'Charts'].map((l, i) => (
 					<li className='nav-item text-md'>
-						<Animated animationIn='fadeInDown' animationInDelay={i*1000}>
-							<i>{l}</i>
+						<Animated animationIn='fadeInDown' animationInDelay={i * 1000}>
+							<small>
+								{' '}
+								<i className='text-muted'>{l}</i>
+							</small>
 						</Animated>
 					</li>
 				))}
