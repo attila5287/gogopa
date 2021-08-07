@@ -26,7 +26,7 @@ export default function NavPills(props) {
 					to={'/finedit/' + state.currentFinancial._id}
 					title='(create a new one or select from existing)'
 					data-toggle='tooltip'
-					className='nav-item nav-link border-0'
+					className='nav-item nav-link border-0 align-items-start'
 				>
 					<span className='text-3xl'>
 						<i className='fas fa-sliders-h mx-1 fa-fw'></i>
@@ -41,7 +41,7 @@ export default function NavPills(props) {
 					></Animated>
 				</Link>
 				<Link
-					className='nav-item nav-link border-0'
+					className='nav-item nav-link border-0 align-items-start'
 					data-toggle='tooltip'
 					title='(generates a
 									statement-style financial)'
@@ -61,9 +61,9 @@ export default function NavPills(props) {
 				</Link>
 				<Link
 					to={'/charts/' + state.currentFinancial._id}
-					className='nav-item nav-link border-0'
+					className='nav-item nav-link border-0 align-items-start'
 				>
-					<span className='text-4xl'>
+					<span className='text-3xl'>
 						<i className='fas fa-chart-line fa-fw mx-1'></i>
 					</span>
 					<Animated

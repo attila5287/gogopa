@@ -36,7 +36,7 @@ function FinancialsList() {
 				<List className='list-group'>
 					{state.financials.map((financial) => (
 						<ListItem key={financial._id}>
-							<Link to={'/financials/' + financial._id}>
+							<Link to={'/finedit/' + financial._id}>
 								<strong>{financial.title}</strong>
 								<i>({financial.company})</i>
 							</Link>

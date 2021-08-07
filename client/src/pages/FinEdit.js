@@ -62,7 +62,7 @@ const FinEdit = (props) => {
 					<Row>
 						<Col size='md-10 md-offset-1' className='text-center'>
 							<div className='table-responsive rounded-xl'>
-								<table className='table table-sm table-primary table-hover table-striped text-sm'>
+								<table className='table table-primary'>
 									<thead>
 										<tr>
 											<th
@@ -87,7 +87,14 @@ const FinEdit = (props) => {
 										{state.currentFinancial.categories.map((c, i) => (
 											<>
 												<tr key={'trc' + i} className=''>
-													<td>{c.name}</td>
+													<td>
+														<input
+															type='text'
+															name=''
+															value={c.name}
+															class='form-control form-control-sm border-0 shadow-none'
+														/>
+													</td>
 
 													{c?.accounts
 														? helpers
@@ -102,7 +109,14 @@ const FinEdit = (props) => {
 												{c.accounts.map((a, ia) => (
 													<>
 														<tr key={'trc' + i + 'tra' + ia}>
-															<td className='px-4'>{a.name}</td>
+															<td className='px-4'>
+																<input
+																	type='text'
+																	name=''
+																	value={a.name}
+																	class='form-control form-control-sm border-0 shadow-none'
+																/>
+															</td>
 															{helpers.groupByAccount(a).map((a) => (
 																<td className={helpers.styleAmount(c.sign)}>
 																	{helpers.formatAmount(c.sign, a)}
@@ -114,7 +128,14 @@ const FinEdit = (props) => {
 																className=''
 																key={'trc' + i + 'tra' + ia + 'tri' + ii}
 															>
-																<td className='px-5 align-middle'>{i.name}</td>
+																<td className='px-5 align-middle'>
+																	<input
+																		type='text'
+																		name=''
+																		value={i.name}
+																		class='form-control form-control-sm border-0 shadow-none'
+																	/>
+																</td>
 																{i.values.map((v) => (
 																	<td className='align-middle'>
 																		{helpers.formatAmount(c.sign, v.amount)}
