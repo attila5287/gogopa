@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useStoreContext } from '../../utils/GlobalState';
 
 export default function NavPills(props) {
-	const [state, dispatch] = useStoreContext();
+ 	const [state, dispatch] = useStoreContext();
 	const location = useLocation();
 
   return (
@@ -23,7 +23,7 @@ export default function NavPills(props) {
 			</nav>
 			<nav className='nav nav-tabs nav-fill mt-0 mb-2 pb-0 shadow-sm'>
 				<Link
-					to='/home'
+					to={'/finedit/' + state.currentFinancial._id}
 					title='(create a new one or select from existing)'
 					data-toggle='tooltip'
 					className='nav-item nav-link border-0'
@@ -34,7 +34,7 @@ export default function NavPills(props) {
 					<Animated
 						animationIn='zoomIn'
 						className={
-							location.pathname === '/home'
+							location.pathname === '/finedit/' + state.currentFinancial._id
 								? 'bg-primary mt-2 mb-0 pt-0 pb-1 rounded-2xl'
 								: 'bg-secondary mt-2 mb-0 pt-0 pb-1 rounded-2xl'
 						}

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Contact from './pages/Contact';
 import Home from "./pages/Home";
 import Charts from './pages/Charts';
+import FinEdit from './pages/FinEdit';
 import Financial from './pages/Financial';
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
@@ -26,7 +27,7 @@ function App() {
 						<Route exact path='/contact' component={Contact} />
 						<Route exact path='/favorites' component={FavoritesList} />
 						<Route exact path='/posts/:id' component={Detail} />
-						<Route exact path='/fin/edit/:id' component={Financial} />
+						<Route exact path='/finedit/:id' component={FinEdit} />
 						<Route exact path='/financials/:id' component={Financial} />
 						<Route exact path='/charts/:id' component={Charts} />
 						<Route component={NoMatch} />
