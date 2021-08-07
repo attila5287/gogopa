@@ -26,6 +26,7 @@ function App() {
 						<Route exact path='/contact' component={Contact} />
 						<Route exact path='/favorites' component={FavoritesList} />
 						<Route exact path='/posts/:id' component={Detail} />
+						<Route exact path='/fin/edit/:id' component={Financial} />
 						<Route exact path='/financials/:id' component={Financial} />
 						<Route exact path='/charts/:id' component={Charts} />
 						<Route component={NoMatch} />

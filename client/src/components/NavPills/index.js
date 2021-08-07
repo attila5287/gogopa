@@ -9,9 +9,9 @@ export default function NavPills(props) {
 
   return (
 		<>
-			<nav className='nav nav-tabs nav-fill my-1 mx-4 shadow-none '>
-				{['Data', 'Report', 'Charts'].map((l, i) => (
-					<li className='nav-item text-md'>
+			<nav className='nav nav-tabs nav-fill my-1 mx-4 shadow-none'>
+				{['Edit', 'Report', 'Charts'].map((l, i) => (
+					<li className='nav-link border-0 text-md'>
 						<Animated animationIn='fadeInDown' animationInDelay={i * 1000}>
 							<small>
 								{' '}
@@ -21,7 +21,7 @@ export default function NavPills(props) {
 					</li>
 				))}
 			</nav>
-			<nav className='nav nav-tabs nav-fill mt-0 mb-2 pb-0 mx-4 shadow-none'>
+			<nav className='nav nav-tabs nav-fill mt-0 mb-2 pb-0 shadow-sm'>
 				<Link
 					to='/home'
 					title='(create a new one or select from existing)'
@@ -29,7 +29,7 @@ export default function NavPills(props) {
 					className='nav-item nav-link border-0'
 				>
 					<span className='text-3xl'>
-						<i className='fas fa-database mx-1 fa-fw'></i>
+						<i className='fas fa-sliders-h mx-1 fa-fw'></i>
 					</span>
 					<Animated
 						animationIn='zoomIn'
