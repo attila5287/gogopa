@@ -62,7 +62,7 @@ const FinEdit = (props) => {
 					<Row>
 						<Col size='md-10 md-offset-1' className='text-center'>
 							<div className='table-responsive rounded-xl'>
-								<table className='table table-primary'>
+								<table className='table table-sm table-bordered'>
 									<thead>
 										<tr>
 											<th
@@ -89,10 +89,11 @@ const FinEdit = (props) => {
 												<tr key={'trc' + i} className=''>
 													<td>
 														<input
+															onChange={() => console.log('on change')}
 															type='text'
 															name=''
-															value={c.name}
-															class='form-control form-control-sm border-0 shadow-none'
+															defaultValue={c.name}
+															class='form-control form-control-sm border-0 shadow-none py-0'
 														/>
 													</td>
 
@@ -111,10 +112,11 @@ const FinEdit = (props) => {
 														<tr key={'trc' + i + 'tra' + ia}>
 															<td className='px-4'>
 																<input
+																	onChange={() => console.log('on change')}
 																	type='text'
 																	name=''
-																	value={a.name}
-																	class='form-control form-control-sm border-0 shadow-none'
+																	defaultValue={a.name}
+																	class='form-control form-control-sm border-0 shadow-none py-0'
 																/>
 															</td>
 															{helpers.groupByAccount(a).map((a) => (
@@ -130,15 +132,31 @@ const FinEdit = (props) => {
 															>
 																<td className='px-5 align-middle'>
 																	<input
+																		onChange={() => console.log('on change')}
 																		type='text'
 																		name=''
-																		value={i.name}
-																		class='form-control form-control-sm border-0 shadow-none'
+																		defaultValue={i.name}
+																		class='form-control form-control-sm border-0 shadow-none py-0'
 																	/>
 																</td>
 																{i.values.map((v) => (
 																	<td className='align-middle'>
-																		{helpers.formatAmount(c.sign, v.amount)}
+																		<div class='input-group mb-3'>
+																			<div class='input-group-prepend'>
+                                        <span class='input-group-text'>
+                                          <i className={helpers.currencyIcons(state.currentFinancial.currency)}></i>
+                                      </span>
+																			</div>
+																			<input
+																				onChange={() =>
+																					console.log('on change')
+																				}
+																				type='text'
+																				name=''
+																				defaultValue={v.amount}
+																				class='form-control form-control-sm border-0 shadow-none py-0'
+																			/>
+																		</div>
 																	</td>
 																))}
 															</tr>

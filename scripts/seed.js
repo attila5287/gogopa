@@ -7,9 +7,9 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/gogopa');
 
 const financials = [
 	{
-		_id: ObjectId('61047919962ae700040307c9'),
 		title: 'Profit & Loss TTM',
 		company: 'Sample Outdoors',
+		currency: 'dollar',
 		notes: [
 			{
 				about: 'TTM',
@@ -238,6 +238,7 @@ const financials = [
 	{
 		title: 'Profit & Loss -3Y',
 		company: 'Sample Outdoors Company',
+		currency: 'dollar',
 		notes: [
 			{
 				about: 'Time Series',
@@ -588,6 +589,7 @@ const financials = [
 	{
 		title: 'Balance Sheet, 2Y ',
 		company: 'Sample Outdoors Company',
+		currency: 'dollar',
 		notes: [
 			{
 				about: 'Description',

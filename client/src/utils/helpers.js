@@ -1,9 +1,23 @@
 module.exports = {
+  currencyIcons: ( currency ) => {
+    const gallery = {
+			won: 'fas fa-won-sign',
+			yen: 'fas fa-yen-sign',
+			shekel: 'fas fa-shekel-sign',
+			rupee: 'fas fa-rupee-sign',
+			ruble: 'fas fa-ruble-sign',
+			pound: 'fas fa-pound-sign',
+			dollar: 'fas fa-dollar-sign',
+			euro: 'fas fa-euro-sign',
+			lira: 'fas fa-lira-sign',
+		};
+    return gallery[currency] ? gallery[currency] : ''
+    },
   breakdownCategory: ( c, d ) => {
     const accountNames = c?.accounts
       ?.flatMap( ( a ) => a.name );
     console.log(`accountNames`, accountNames)
-const obj = {};
+    const obj = {};
     const accts = c.accounts.map((acct) => {
 			if (acct.items.length) {
 				obj[acct.name] = acct.items
