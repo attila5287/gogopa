@@ -2,6 +2,7 @@ import BackToHome from '../components/BackToHome';
 import { Animated } from 'react-animated-css';
 import React, { useEffect } from 'react';
 import { Col, Row, Container } from '../components/Grid';
+import CreateFinancial from '../components/CreateFinancial';
 import NavPills from '../components/NavPills';
 import helpers from '../utils/helpers';
 import API from '../utils/API';
@@ -87,13 +88,13 @@ const FinEdit = (props) => {
 										{state.currentFinancial.categories.map((c, i) => (
 											<>
 												<tr key={'trc' + i} className=''>
-													<td>
+													<td className="align-middle">
 														<input
 															onChange={() => console.log('on change')}
 															type='text'
 															name=''
 															defaultValue={c.name}
-															class='form-control form-control-sm border-0 shadow-none py-0'
+															class='form-control form-control-sm py-0'
 														/>
 													</td>
 
@@ -101,7 +102,7 @@ const FinEdit = (props) => {
 														? helpers
 																.groupByCategory(c)
 																.map((t) => (
-																	<td className={helpers.styleAmount(c.sign)}>
+																	<td className={'align-middle text-sm '+ helpers.styleAmount(c.sign)}>
 																		{helpers.formatAmount(c.sign, t)}
 																	</td>
 																))
@@ -110,17 +111,22 @@ const FinEdit = (props) => {
 												{c.accounts.map((a, ia) => (
 													<>
 														<tr key={'trc' + i + 'tra' + ia}>
-															<td className='px-4'>
+															<td className='align-middle px-4'>
 																<input
 																	onChange={() => console.log('on change')}
 																	type='text'
 																	name=''
 																	defaultValue={a.name}
-																	class='form-control form-control-sm border-0 shadow-none py-0'
+																	class='form-control form-control-sm py-0'
 																/>
 															</td>
 															{helpers.groupByAccount(a).map((a) => (
-																<td className={helpers.styleAmount(c.sign)}>
+																<td
+																	className={
+																		'text-sm align-middle ' +
+																		helpers.styleAmount(c.sign)
+																	}
+																>
 																	{helpers.formatAmount(c.sign, a)}
 																</td>
 															))}
@@ -136,25 +142,29 @@ const FinEdit = (props) => {
 																		type='text'
 																		name=''
 																		defaultValue={i.name}
-																		class='form-control form-control-sm border-0 shadow-none py-0'
+																		class='form-control form-control-sm py-0'
 																	/>
 																</td>
 																{i.values.map((v) => (
-																	<td className='align-middle'>
-																		<div class='input-group mb-3'>
-																			<div class='input-group-prepend'>
-                                        <span class='input-group-text'>
-                                          <i className={helpers.currencyIcons(state.currentFinancial.currency)}></i>
-                                      </span>
+																	<td className='text-sm align-middle'>
+																		<div class='input-group align-items-center mb-3'>
+																			<div class='input-group-prepend p-0'>
+																				<span class='input-group-text text-sm py-0 px-2'>
+																					<i
+																						className={helpers.currencyIcons(
+																							state.currentFinancial.currency
+																						)}
+																					></i>
+																				</span>
 																			</div>
 																			<input
 																				onChange={() =>
 																					console.log('on change')
 																				}
-																				type='text'
+																				type='number'
 																				name=''
 																				defaultValue={v.amount}
-																				class='form-control form-control-sm border-0 shadow-none py-0'
+																				class='form-control form-control-sm py-0'
 																			/>
 																		</div>
 																	</td>
@@ -170,6 +180,7 @@ const FinEdit = (props) => {
 							</div>
 						</Col>
 					</Row>
+					<CreateFinancial />
 				</Container>
 			) : (
 				<div>loading...</div>
