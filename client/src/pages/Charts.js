@@ -5,8 +5,6 @@ import {Col, Row, Container} from '../components/Grid';
 import BackToHome from '../components/BackToHome';
 import FinNotes from '../components/FinNotes';
 import NavPills from '../components/NavPills';
-import Dynamic from '../components/Dynamic';
-import Outline from '../components/Outline';
 import helpers from '../utils/helpers';
 import API from '../utils/API';
 import {useStoreContext} from '../utils/GlobalState';
@@ -34,9 +32,7 @@ const Charts = (props) => {
 				<Container fluid>
 					<FinNotes />
 					{state.currentFinancial.categories.map((c, i) => (
-						<>
-							{' '}
-							<Bar
+						<Bar
 								data={{
 									labels: helpers.datesArray(c),
 									datasets: [
@@ -62,8 +58,7 @@ const Charts = (props) => {
 								options={{
 									plugins: {}
 								}}
-							/>{' '}
-						</>
+            />
 					))}
 					<div className='row no-gutters'>
 						{state.currentFinancial.categories.reverse().map((c, i) =>

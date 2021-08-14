@@ -23,7 +23,7 @@ const Financial = (props) => {
 	}, []);
 
 	return (
-		<div className='mini'>
+		<div className='mini mb-5 pb-5'>
 			<BackToHome />
 			{state.currentFinancial ? (
 				<Container fluid>
@@ -64,7 +64,7 @@ const Financial = (props) => {
 					<Row>
 						<Col size='md-10 md-offset-1' className='text-center'>
 							<div className='table-responsive rounded-xl'>
-								<table className='table table-sm table-primary table-hover table-striped text-sm'>
+								<table className='table table-sm table-hover table-striped text-sm'>
 									<thead>
 										<tr>
 											<th

@@ -88,13 +88,13 @@ const FinEdit = (props) => {
 										{state.currentFinancial.categories.map((c, i) => (
 											<>
 												<tr key={'trc' + i} className=''>
-													<td className="align-middle">
+													<td className='align-middle'>
 														<input
 															onChange={() => console.log('on change')}
 															type='text'
 															name=''
 															defaultValue={c.name}
-															class='form-control form-control-sm py-0'
+															className='form-control form-control-sm py-0'
 														/>
 													</td>
 
@@ -102,7 +102,12 @@ const FinEdit = (props) => {
 														? helpers
 																.groupByCategory(c)
 																.map((t) => (
-																	<td className={'align-middle text-sm '+ helpers.styleAmount(c.sign)}>
+																	<td
+																		className={
+																			'align-middle text-sm ' +
+																			helpers.styleAmount(c.sign)
+																		}
+																	>
 																		{helpers.formatAmount(c.sign, t)}
 																	</td>
 																))
@@ -117,7 +122,7 @@ const FinEdit = (props) => {
 																	type='text'
 																	name=''
 																	defaultValue={a.name}
-																	class='form-control form-control-sm py-0'
+																	className='form-control form-control-sm py-0'
 																/>
 															</td>
 															{helpers.groupByAccount(a).map((a) => (
@@ -138,18 +143,23 @@ const FinEdit = (props) => {
 															>
 																<td className='px-5 align-middle'>
 																	<input
-																		onChange={() => console.log('on change')}
+																		onChange={() =>
+																			console.log(
+																				'on change ' +
+																					state.currentFinancial._id
+																			)
+																		}
 																		type='text'
 																		name=''
 																		defaultValue={i.name}
-																		class='form-control form-control-sm py-0'
+																		className='form-control form-control-sm py-0'
 																	/>
 																</td>
 																{i.values.map((v) => (
 																	<td className='text-sm align-middle'>
-																		<div class='input-group align-items-center mb-3'>
-																			<div class='input-group-prepend p-0'>
-																				<span class='input-group-text text-sm py-0 px-2'>
+																		<div className='input-group align-items-center mb-3'>
+																			<div className='input-group-prepend p-0'>
+																				<span className='input-group-text text-sm py-0 px-2'>
 																					<i
 																						className={helpers.currencyIcons(
 																							state.currentFinancial.currency
@@ -158,13 +168,16 @@ const FinEdit = (props) => {
 																				</span>
 																			</div>
 																			<input
-																				onChange={() =>
-																					console.log('on change')
-																				}
+																				onChange={(e) =>helpers.changeValue(e)}
 																				type='number'
-																				name=''
+																				data-fin={state.currentFinancial._id}
+																				data-cat={c.name}
+																				data-acct={a.name}
+																				data-item={i.name}
+																				data-date={v.dated}
+                                        name={ v.dated + i.name }
 																				defaultValue={v.amount}
-																				class='form-control form-control-sm py-0'
+																				className='form-control form-control-sm py-0'
 																			/>
 																		</div>
 																	</td>
