@@ -28,37 +28,65 @@ const Charts = (props) => {
 		<div className='mini'>
 			<BackToHome />
 			<NavPills />
+			<Animated animationIn='slideInLeft'>
+				<div className='text-sm  mb-0'>
+					<i className='far fa-calendar fa-fw mx-1'></i>
+					<b>{'Created At: '}</b>
+					{helpers.formatDate(state.currentFinancial.created)}
+
+					{state.currentFinancial.notes.map((n, i) => (
+						<>
+							<span>
+								<i className='far fa-sticky-note fa-fw mx-1'></i>
+								<b>
+									{n.about}
+									{' : '}
+								</b>
+							</span>
+							<i className='mb-0'>{n.text}</i>
+						</>
+					))}
+				</div>
+			</Animated>
+			<Animated animationInDelay={0} animationIn='zoomIn'>
+				<h5 className='text-dark text-center mb-0 mx-5'>
+					<b>{state.currentFinancial.title}</b>
+				</h5>
+				<hr className='bg-primary my-0 mx-5 pt-0 pb-1 rounded-lg' />
+				<p className='text-sm text-center mb-1'>
+					{state.currentFinancial.company}{' '}
+				</p>
+			</Animated>
 			{state.currentFinancial ? (
 				<Container fluid>
-					<FinNotes />
 					{state.currentFinancial.categories.map((c, i) => (
 						<Bar
-								data={{
-									labels: helpers.datesArray(c),
-									datasets: [
-										{
-											label: c.name,
-											data: helpers.groupByCategory(c),
-											backgroundColor: helpers.genColors(i)
-										},
-										{
-											type: 'line',
-											label:
-												state.currentFinancial?.title +
-												' ' +
-												helpers.datesArray(c).join(' ') +
-												' Totals',
-											backgroundColor: 'rgba(54, 162, 235, 0.8)',
-											borderColor: 'rgba(54, 162, 235, 0.7)',
-											pointRadius: 8,
-											data: helpers.finalSum(state.currentFinancial?.categories)
-										}
-									]
-								}}
-								options={{
-									plugins: {}
-								}}
-            />
+							data={{
+								labels: helpers.datesArray(c),
+								datasets: [
+									{
+										label: c.name,
+										data: helpers.groupByCategory(c),
+										backgroundColor: helpers.genColors(i)
+									},
+									{
+										type: 'line',
+										label:
+											state.currentFinancial?.title +
+											' ' +
+											helpers.datesArray(c).join(' ') +
+											' Totals',
+										backgroundColor: 'rgba(54, 162, 235, 0.8)',
+										borderColor: 'rgba(54, 162, 235, 0.7)',
+										pointRadius: 8,
+										data: helpers.finalSum(state.currentFinancial?.categories)
+									}
+								]
+							}}
+							options={{
+								plugins: {}
+							}}
+						/>
 					))}
 					<div className='row no-gutters'>
 						{state.currentFinancial.categories.reverse().map((c, i) =>

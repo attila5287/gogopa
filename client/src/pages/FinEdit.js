@@ -21,6 +21,16 @@ const FinEdit = (props) => {
 			.catch((err) => console.log(err));
 	}, []);
 
+  const  handleChange= (e) => {
+		console.log('--------------');
+		console.log(`val:`, e.target.value);
+		console.log(`fin:`, e.target.dataset['fin']);
+		console.log(`cat:`, e.target.dataset['cat']);
+		console.log(`acct:`, e.target.dataset['acct']);
+		console.log(`item:`, e.target.dataset['item']);
+		console.log(`date:`, e.target.dataset['date']);
+  };
+  
 	return (
 		<div className='mini'>
 			<BackToHome />
@@ -94,7 +104,7 @@ const FinEdit = (props) => {
 															type='text'
 															name=''
 															defaultValue={c.name}
-															className='form-control form-control-sm py-0'
+															className='form-control form-control-sm py-0 shadow-none bg-transparent border-0'
 														/>
 													</td>
 
@@ -122,7 +132,7 @@ const FinEdit = (props) => {
 																	type='text'
 																	name=''
 																	defaultValue={a.name}
-																	className='form-control form-control-sm py-0'
+																	className='form-control form-control-sm py-0 shadow-none bg-transparent border-0'
 																/>
 															</td>
 															{helpers.groupByAccount(a).map((a) => (
@@ -152,12 +162,12 @@ const FinEdit = (props) => {
 																		type='text'
 																		name=''
 																		defaultValue={i.name}
-																		className='form-control form-control-sm py-0'
+																		className='form-control form-control-sm py-0 shadow-none bg-transparent border-0'
 																	/>
 																</td>
 																{i.values.map((v) => (
 																	<td className='text-sm align-middle'>
-																		<div className='input-group align-items-center mb-3'>
+																		<div className='shadow-none border-0 bg-transparent input-group align-items-center mb-3 py-0'>
 																			<div className='input-group-prepend p-0'>
 																				<span className='input-group-text text-sm py-0 px-2'>
 																					<i
@@ -168,7 +178,7 @@ const FinEdit = (props) => {
 																				</span>
 																			</div>
 																			<input
-																				onChange={(e) =>helpers.changeValue(e)}
+																				onChange={(e) => handleChange(e)}
 																				type='number'
 																				data-fin={state.currentFinancial._id}
 																				data-cat={c.name}
@@ -177,7 +187,7 @@ const FinEdit = (props) => {
 																				data-date={v.dated}
                                         name={ v.dated + i.name }
 																				defaultValue={v.amount}
-																				className='form-control form-control-sm py-0'
+																				className='form-control form-control-sm'
 																			/>
 																		</div>
 																	</td>

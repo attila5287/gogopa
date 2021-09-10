@@ -11,7 +11,7 @@ export default function NavPills(props) {
 		<>
 			<nav className='nav nav-tabs nav-fill my-1 mx-4 shadow-none'>
 				{['Edit', 'Report', 'Charts'].map((l, i) => (
-					<li className='nav-link border-0 text-md'>
+					<li key={l} className='nav-link border-0 text-md'>
 						<Animated animationIn='fadeInDown' animationInDelay={i * 1000}>
 							<small>
 								{' '}
@@ -23,6 +23,7 @@ export default function NavPills(props) {
 			</nav>
 			<nav className='nav nav-tabs nav-fill mt-0 mb-2 pb-0 shadow-sm'>
 				<Link
+					key={1}
 					to={'/finedit/' + state.currentFinancial._id}
 					title='(create a new one or select from existing)'
 					data-toggle='tooltip'
@@ -41,6 +42,7 @@ export default function NavPills(props) {
 					></Animated>
 				</Link>
 				<Link
+					key={2}
 					className='nav-item nav-link border-0 align-items-start'
 					data-toggle='tooltip'
 					title='(generates a
@@ -60,7 +62,10 @@ export default function NavPills(props) {
 					></Animated>
 				</Link>
 				<Link
-					to={'/charts/' + state.currentFinancial._id}
+					key={3}
+          to={ '/charts/' + state.currentFinancial._id }
+          data-toggle='tooltip'
+          title='data visualization'
 					className='nav-item nav-link border-0 align-items-start'
 				>
 					<span className='text-3xl'>

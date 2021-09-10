@@ -1,13 +1,4 @@
 module.exports = {
-  changeValue: ( e ) => {
-    console.log('--------------');
-    console.log( `v:`, e.target.value )
-    console.log( `f:`, e.target.dataset['fin'] )
-    console.log( `c:`, e.target.dataset['cat'] )
-    console.log( `a:`, e.target.dataset['acct'] )
-    console.log( `i:`, e.target.dataset['item'] )
-    console.log( `d:`, e.target.dataset['date'] )
-  },
   currencyIcons: ( currency ) => {
     const gallery = {
 			won: 'fas fa-won-sign',
@@ -19,13 +10,13 @@ module.exports = {
 			dollar: 'fas fa-dollar-sign',
 			euro: 'fas fa-euro-sign',
 			lira: 'fas fa-lira-sign',
-		};
+    };
     return gallery[currency] ? gallery[currency] : 'far fa-edit'
-    },
+  },
   breakdownCategory: ( c, d ) => {
     const accountNames = c?.accounts
       ?.flatMap( ( a ) => a.name );
-    console.log(`accountNames`, accountNames)
+    // console.log(`accountNames`, accountNames)
     const obj = {};
     const accts = c.accounts.map((acct) => {
 			if (acct.items.length) {
@@ -161,7 +152,7 @@ module.exports = {
 			return obj;
 		});
 
-		console.log(`accts`, accts);
+		// console.log(`accts`, accts);
 
 		return dates.map((d) => obj[d]);
 	},
