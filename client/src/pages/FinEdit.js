@@ -29,6 +29,7 @@ const FinEdit = (props) => {
 		console.log(`acct:`, e.target.dataset['acct']);
 		console.log(`item:`, e.target.dataset['item']);
 		console.log(`date:`, e.target.dataset['date']);
+		console.log('--------------');
   };
   
 	return (
@@ -167,7 +168,7 @@ const FinEdit = (props) => {
 																</td>
 																{i.values.map((v) => (
 																	<td className='text-sm align-middle'>
-																		<div className='shadow-none border-0 bg-transparent input-group align-items-center mb-3 py-0'>
+                                    <div className='shadow-none border-0 bg-transparent input-group align-items-center mb-3 py-0'>
                                       
 																			<div className='input-group-prepend p-0'>
 																				<span className='input-group-text text-sm py-0 px-2'>
