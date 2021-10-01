@@ -168,6 +168,7 @@ const FinEdit = (props) => {
 																{i.values.map((v) => (
 																	<td className='text-sm align-middle'>
 																		<div className='shadow-none border-0 bg-transparent input-group align-items-center mb-3 py-0'>
+                                      
 																			<div className='input-group-prepend p-0'>
 																				<span className='input-group-text text-sm py-0 px-2'>
 																					<i
